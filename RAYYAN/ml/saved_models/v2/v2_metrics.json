@@ -1,0 +1,701 @@
+{
+ "model_version": "rf-v2-vwc6h-20261117-2eb1979d",
+ "trained_at": "2026-11-17T16:42:47+00:00",
+ "dataset": "RAYYAN ML dataset v2 (RAYYAN_ML_Ready.xlsx)",
+ "task": "regression",
+ "target": "target_after_6h_VWC_pct",
+ "target_unit": "VWC % (نقطة مئوية)",
+ "horizon": "6 ساعات بعد قرار 06:00 UTC",
+ "algorithm": "RandomForestRegressor + SimpleImputer(median) + OneHotEncoder",
+ "features": [
+  "crop",
+  "irrigation_system",
+  "soil_type",
+  "area_m2",
+  "root_depth_m",
+  "wilting_pct",
+  "field_capacity_pct",
+  "efficiency",
+  "nominal_flow_L_min",
+  "kc_assumed",
+  "before_VWC_pct",
+  "before_missing",
+  "lag1_before_VWC_pct",
+  "past7_before_mean_pct",
+  "past7_available_count",
+  "past7_rain_mm",
+  "air_temp_observed_C",
+  "humidity_observed_pct",
+  "et0_forecast_24h_mm",
+  "rain_forecast_24h_mm",
+  "doy_sin",
+  "doy_cos",
+  "planned_volume_L",
+  "planned_duration_min"
+ ],
+ "numeric_features": [
+  "area_m2",
+  "root_depth_m",
+  "wilting_pct",
+  "field_capacity_pct",
+  "efficiency",
+  "nominal_flow_L_min",
+  "kc_assumed",
+  "before_VWC_pct",
+  "before_missing",
+  "lag1_before_VWC_pct",
+  "past7_before_mean_pct",
+  "past7_available_count",
+  "past7_rain_mm",
+  "air_temp_observed_C",
+  "humidity_observed_pct",
+  "et0_forecast_24h_mm",
+  "rain_forecast_24h_mm",
+  "doy_sin",
+  "doy_cos",
+  "planned_volume_L",
+  "planned_duration_min"
+ ],
+ "categorical_features": [
+  "crop",
+  "irrigation_system",
+  "soil_type"
+ ],
+ "feature_descriptions_ar": {
+  "event_id": "معرف فريد للقرار اليومي",
+  "zone_id": "معرف المنطقة؛ للاختبار حسب المنطقة وليس ضمن النموذج الحالي",
+  "feature_cutoff_at": "وقت القرار وآخر وقت مسموح للمدخلات؛ UTC",
+  "weather_id": "معرف سجل توقع الطقس المرتبط",
+  "temporal_split": "train / validation / test / gap؛ لا يدخل النموذج",
+  "provenance": "SIMULATED لكل السجلات",
+  "crop": "المحصول كما في الملف الأصلي",
+  "irrigation_system": "نظام الري كما في الأصل",
+  "soil_type": "نوع التربة كما في الأصل",
+  "area_m2": "المساحة الأصلية",
+  "root_depth_m": "عمق الجذور الأصلي المفترض",
+  "wilting_pct": "المحتوى الحجمي عند نقطة الذبول في الأصل",
+  "field_capacity_pct": "المحتوى الحجمي عند السعة الحقلية في الأصل",
+  "efficiency": "كفاءة الري الاسمية من الأصل؛ ليست الكفاءة الفعلية الخفية",
+  "nominal_flow_L_min": "التدفق الاسمي من الأصل",
+  "kc_assumed": "معامل محصول مفترض للمحاكاة؛ غير معاير",
+  "before_VWC_pct": "قراءة الحساس عند القرار؛ فارغة عند فقده",
+  "before_missing": "1 عند فقد قراءة الحساس الحالية، وإلا 0",
+  "lag1_before_VWC_pct": "قراءة المنطقة في اليوم السابق فقط",
+  "past7_before_mean_pct": "متوسط القراءات المتاحة في الأيام السبعة السابقة فقط",
+  "past7_available_count": "عدد القراءات المتاحة ضمن نافذة الأيام السابقة؛ من 0 إلى 7",
+  "past7_rain_mm": "مجموع المطر المتحقق خلال الأيام السبعة السابقة المنتهية",
+  "air_temp_observed_C": "درجة حرارة الهواء المشاهدة عند القرار في المحاكاة",
+  "humidity_observed_pct": "الرطوبة الجوية المشاهدة عند القرار في المحاكاة",
+  "et0_forecast_24h_mm": "توقع افتراضي للبخر النتح المرجعي خلال اليوم التالي؛ ليس FAO PM",
+  "rain_forecast_24h_mm": "توقع افتراضي للمطر خلال اليوم التالي",
+  "doy_sin": "ترميز موسمي جيبي لرقم اليوم في السنة",
+  "doy_cos": "ترميز موسمي جيب تمام لرقم اليوم في السنة",
+  "planned_volume_L": "الفعل المخطط المعروف قبل التنفيذ؛ ليس كمية مثلى مثبتة",
+  "planned_duration_min": "مدة الخطة؛ حجم الخطة مقسومًا على التدفق الاسمي",
+  "measured_at": "وقت توفر الهدف بعد 6 ساعات؛ UTC",
+  "target_after_6h_VWC_pct": "هدف الانحدار؛ قراءة الحساس بعد 6 ساعات",
+  "label_quality": "valid أو missing؛ لتنقية الأهداف فقط"
+ },
+ "forbidden_inputs": [
+  "target_after_6h_VWC_pct",
+  "measured_at",
+  "label_quality",
+  "actual_volume_L",
+  "actual_duration_min",
+  "actual_flow_L_min",
+  "simulated_fault_label",
+  "et0_realized_24h_mm",
+  "rain_realized_24h_mm",
+  "event_id",
+  "true_before_pct",
+  "true_after_6h_pct",
+  "true_next_day_pct",
+  "effective_efficiency",
+  "effective_rain_mm",
+  "actual_et_24h_mm",
+  "drainage_24h_mm",
+  "water_balance_residual_mm",
+  "provenance"
+ ],
+ "data": {
+  "source": "SQLite v2_ml_ready (من الورقة ML_Ready)",
+  "data_hash_sha256": "2eb1979d5abd2630fc79a8c563b481f7e9e0b8b314ca18bf73ef99bcf6c2f7c0",
+  "checks": {
+   "features_from_dictionary": 24,
+   "features_exclude_forbidden": true,
+   "no_identifier_inputs": true,
+   "decision_before_measurement": true,
+   "weather_issued_before_decision": true,
+   "features_use_forecast_not_realized": true,
+   "train_before_validation": true,
+   "validation_before_test": true,
+   "split_periods": {
+    "gap": [
+     "2026-02-21",
+     "2026-06-16"
+    ],
+    "test": [
+     "2026-06-17",
+     "2026-10-04"
+    ],
+    "train": [
+     "2024-10-05",
+     "2026-02-20"
+    ],
+    "validation": [
+     "2026-02-28",
+     "2026-06-09"
+    ]
+   },
+   "rows_total": 2920,
+   "gap_rows_excluded": 56,
+   "missing_targets_dropped": 64,
+   "missing_current_reading": 58
+  },
+  "counts": {
+   "train": 1973,
+   "validation": 395,
+   "test": 433,
+   "deployed_fit": 2368,
+   "gap_excluded": 56,
+   "missing_targets": 64
+  },
+  "label_origin": "SIMULATED — ليست قياسات ميدانية"
+ },
+ "selection": {
+  "method": "grid on validation RMSE only; test untouched",
+  "grid": {
+   "n_estimators": [
+    300
+   ],
+   "max_depth": [
+    null,
+    12,
+    20
+   ],
+   "min_samples_leaf": [
+    1,
+    3,
+    5
+   ],
+   "max_features": [
+    1.0,
+    0.5,
+    "sqrt"
+   ]
+  },
+  "n_candidates": 27,
+  "best_params": {
+   "n_estimators": 300,
+   "max_depth": 20,
+   "min_samples_leaf": 1,
+   "max_features": 1.0
+  },
+  "best_validation": {
+   "mae": 0.4900778663366858,
+   "rmse": 0.6770793396442842,
+   "r2": 0.9741850082657537
+  },
+  "top5": [
+   {
+    "params": {
+     "n_estimators": 300,
+     "max_depth": 20,
+     "min_samples_leaf": 1,
+     "max_features": 1.0
+    },
+    "n": 395,
+    "mae": 0.4900778663366858,
+    "rmse": 0.6770793396442842,
+    "r2": 0.9741850082657537
+   },
+   {
+    "params": {
+     "n_estimators": 300,
+     "max_depth": 12,
+     "min_samples_leaf": 1,
+     "max_features": 1.0
+    },
+    "n": 395,
+    "mae": 0.4917867478651106,
+    "rmse": 0.6774710728039688,
+    "r2": 0.9741551284183784
+   },
+   {
+    "params": {
+     "n_estimators": 300,
+     "max_depth": null,
+     "min_samples_leaf": 1,
+     "max_features": 1.0
+    },
+    "n": 395,
+    "mae": 0.49161985569620226,
+    "rmse": 0.6776388202720761,
+    "r2": 0.9741423280238304
+   },
+   {
+    "params": {
+     "n_estimators": 300,
+     "max_depth": 12,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "n": 395,
+    "mae": 0.4917938419269349,
+    "rmse": 0.680484234618971,
+    "r2": 0.973924718697237
+   },
+   {
+    "params": {
+     "n_estimators": 300,
+     "max_depth": 20,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "n": 395,
+    "mae": 0.49171034734866215,
+    "rmse": 0.681178541030287,
+    "r2": 0.9738714816932026
+   }
+  ]
+ },
+ "results": [
+  {
+   "model_id": "train_median",
+   "label_ar": "خط أساس: الوسيط",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 3.332614430379747,
+   "rmse": 4.223144588396936,
+   "r2": -0.004303017946640786
+  },
+  {
+   "model_id": "persistence",
+   "label_ar": "خط أساس: الرطوبة الحالية تبقى كما هي",
+   "split": "validation",
+   "trained_on": "none",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 1.322473417721519,
+   "rmse": 1.8675125144955438,
+   "r2": 0.8036097568013938
+  },
+  {
+   "model_id": "rf_frozen",
+   "label_ar": "Random Forest — مدرب على التدريب فقط",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.4900778663366856,
+   "rmse": 0.677079339644284,
+   "r2": 0.9741850082657537
+  },
+  {
+   "model_id": "train_median",
+   "label_ar": "خط أساس: الوسيط",
+   "split": "test",
+   "trained_on": "train+validation",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 3.394316166281756,
+   "rmse": 4.326035896233009,
+   "r2": -0.013566561239674924
+  },
+  {
+   "model_id": "persistence",
+   "label_ar": "خط أساس: الرطوبة الحالية تبقى كما هي",
+   "split": "test",
+   "trained_on": "none",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 1.6308385681293303,
+   "rmse": 2.2266601312849796,
+   "r2": 0.731477981695061
+  },
+  {
+   "model_id": "rf_frozen",
+   "label_ar": "Random Forest — مدرب على التدريب فقط",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.5470554357119233,
+   "rmse": 0.7630122214193793,
+   "r2": 0.9684691974325985
+  },
+  {
+   "model_id": "rf_deployed",
+   "label_ar": "Random Forest — مدرب على التدريب+التحقق (المستخدم)",
+   "split": "test",
+   "trained_on": "train+validation",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.5348585895257044,
+   "rmse": 0.7399822550511382,
+   "r2": 0.9703438583482138
+  },
+  {
+   "model_id": "reported_train_median",
+   "label_ar": "مُبلَّغ في الملف: train_median",
+   "split": "validation",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 395,
+   "mae": 3.332614430379747,
+   "rmse": 4.223144588396936,
+   "r2": -0.0043030179466407
+  },
+  {
+   "model_id": "reported_persistence",
+   "label_ar": "مُبلَّغ في الملف: persistence",
+   "split": "validation",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 395,
+   "mae": 1.341475443037975,
+   "rmse": 1.8890598414977475,
+   "r2": 0.7990517179019864
+  },
+  {
+   "model_id": "reported_simple_water_balance",
+   "label_ar": "مُبلَّغ في الملف: simple_water_balance",
+   "split": "validation",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 395,
+   "mae": 0.5694892594725737,
+   "rmse": 1.0189207002218377,
+   "r2": 0.9415380042320372
+  },
+  {
+   "model_id": "reported_random_forest",
+   "label_ar": "مُبلَّغ في الملف: random_forest",
+   "split": "validation",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 395,
+   "mae": 0.4999670929449284,
+   "rmse": 0.6978259821424013,
+   "r2": 0.9725787570007534
+  },
+  {
+   "model_id": "reported_train_median",
+   "label_ar": "مُبلَّغ في الملف: train_median",
+   "split": "test",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 433,
+   "mae": 3.391490300230947,
+   "rmse": 4.320955580415226,
+   "r2": -0.0111873786199476
+  },
+  {
+   "model_id": "reported_persistence",
+   "label_ar": "مُبلَّغ في الملف: persistence",
+   "split": "test",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 433,
+   "mae": 1.6643353348729792,
+   "rmse": 2.279445686740326,
+   "r2": 0.7185958267417847
+  },
+  {
+   "model_id": "reported_simple_water_balance",
+   "label_ar": "مُبلَّغ في الملف: simple_water_balance",
+   "split": "test",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 433,
+   "mae": 0.5225625938106236,
+   "rmse": 0.947400513366282,
+   "r2": 0.9513884724800366
+  },
+  {
+   "model_id": "reported_random_forest",
+   "label_ar": "مُبلَّغ في الملف: random_forest",
+   "split": "test",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 433,
+   "mae": 0.5685157666630437,
+   "rmse": 0.8034538537631374,
+   "r2": 0.9650381896181665
+  }
+ ],
+ "error_analysis_test": {
+  "by_zone": {
+   "Z001": {
+    "n": 108,
+    "mae": 0.44807275983045036,
+    "rmse": 0.5633441536657823,
+    "r2": 0.29735202442121333,
+    "crop": "نخيل مجدول",
+    "zone_name": "النخيل والفاكهة"
+   },
+   "Z002": {
+    "n": 109,
+    "mae": 0.49597477499257225,
+    "rmse": 0.6200029597219368,
+    "r2": 0.660301970657307,
+    "crop": "برسيم",
+    "zone_name": "الحقول المفتوحة"
+   },
+   "Z003": {
+    "n": 109,
+    "mae": 0.4944434143021246,
+    "rmse": 0.6779952620118805,
+    "r2": 0.7727078185697729,
+    "crop": "خضار",
+    "zone_name": "البيوت المحمية"
+   },
+   "Z004": {
+    "n": 107,
+    "mae": 0.7032367156057894,
+    "rmse": 1.0176941872463972,
+    "r2": 0.6803130057803575,
+    "crop": "نجيل",
+    "zone_name": "المساحات الخضراء"
+   }
+  },
+  "by_missing_reading": {
+   "0": {
+    "n": 421,
+    "mae": 0.5266072041568702
+   },
+   "1": {
+    "n": 12,
+    "mae": 0.8243446928823074
+   }
+  }
+ },
+ "importance": {
+  "permutation_test": [
+   {
+    "feature": "before_VWC_pct",
+    "rmse_increase": 0.8183054545410468,
+    "std": 0.03494505837583429
+   },
+   {
+    "feature": "wilting_pct",
+    "rmse_increase": 0.4449406280040781,
+    "std": 0.02563925920298687
+   },
+   {
+    "feature": "field_capacity_pct",
+    "rmse_increase": 0.3639655518924459,
+    "std": 0.021265606344000664
+   },
+   {
+    "feature": "planned_volume_L",
+    "rmse_increase": 0.353271140715494,
+    "std": 0.017524069099582703
+   },
+   {
+    "feature": "planned_duration_min",
+    "rmse_increase": 0.3512331226763624,
+    "std": 0.02175408898578424
+   },
+   {
+    "feature": "kc_assumed",
+    "rmse_increase": 0.31427016271323904,
+    "std": 0.01812439882417981
+   },
+   {
+    "feature": "efficiency",
+    "rmse_increase": 0.31141777272361837,
+    "std": 0.020519929154516538
+   },
+   {
+    "feature": "root_depth_m",
+    "rmse_increase": 0.2616738172952465,
+    "std": 0.020067922145038358
+   },
+   {
+    "feature": "crop",
+    "rmse_increase": 0.12734863115568862,
+    "std": 0.00773115464565056
+   },
+   {
+    "feature": "soil_type",
+    "rmse_increase": 0.12102391783161866,
+    "std": 0.008615073317813053
+   },
+   {
+    "feature": "past7_before_mean_pct",
+    "rmse_increase": 0.0974862934354767,
+    "std": 0.010621327613389306
+   },
+   {
+    "feature": "irrigation_system",
+    "rmse_increase": 0.07590714851612676,
+    "std": 0.010081433033830575
+   },
+   {
+    "feature": "rain_forecast_24h_mm",
+    "rmse_increase": 0.05007905894677085,
+    "std": 0.006216706374353165
+   },
+   {
+    "feature": "area_m2",
+    "rmse_increase": 0.03365321366656153,
+    "std": 0.002763810473137914
+   },
+   {
+    "feature": "nominal_flow_L_min",
+    "rmse_increase": 0.02784134759829382,
+    "std": 0.0027912756822828597
+   },
+   {
+    "feature": "lag1_before_VWC_pct",
+    "rmse_increase": 0.017513114704138088,
+    "std": 0.0025760018660158095
+   },
+   {
+    "feature": "before_missing",
+    "rmse_increase": 0.0031527776533360917,
+    "std": 0.0018813077660931995
+   },
+   {
+    "feature": "humidity_observed_pct",
+    "rmse_increase": 0.0011296572599240108,
+    "std": 0.003509928055744833
+   },
+   {
+    "feature": "past7_rain_mm",
+    "rmse_increase": 0.0006222406517109147,
+    "std": 0.0013884572203829478
+   },
+   {
+    "feature": "air_temp_observed_C",
+    "rmse_increase": -0.0002938320452538834,
+    "std": 0.00242530209960204
+   },
+   {
+    "feature": "doy_sin",
+    "rmse_increase": -0.00037842992136335465,
+    "std": 0.0022502085402885856
+   },
+   {
+    "feature": "past7_available_count",
+    "rmse_increase": -0.0005007346644696376,
+    "std": 0.0006069900989802305
+   },
+   {
+    "feature": "doy_cos",
+    "rmse_increase": -0.004046239038113209,
+    "std": 0.0038234245508368754
+   },
+   {
+    "feature": "et0_forecast_24h_mm",
+    "rmse_increase": -0.004817547139004663,
+    "std": 0.0017278128125518977
+   }
+  ],
+  "note": "Permutation على الاختبار بعد الاختيار — للتفسير فقط"
+ },
+ "feature_ranges": {
+  "area_m2": {
+   "min": 200.0,
+   "max": 800.0
+  },
+  "root_depth_m": {
+   "min": 0.2,
+   "max": 0.6
+  },
+  "wilting_pct": {
+   "min": 8.0,
+   "max": 16.0
+  },
+  "field_capacity_pct": {
+   "min": 22.0,
+   "max": 34.0
+  },
+  "efficiency": {
+   "min": 0.75,
+   "max": 0.92
+  },
+  "nominal_flow_L_min": {
+   "min": 100.0,
+   "max": 320.0
+  },
+  "kc_assumed": {
+   "min": 0.8,
+   "max": 1.05
+  },
+  "before_VWC_pct": {
+   "min": 10.3918,
+   "max": 31.0844
+  },
+  "before_missing": {
+   "min": 0.0,
+   "max": 1.0
+  },
+  "lag1_before_VWC_pct": {
+   "min": 10.3918,
+   "max": 31.0844
+  },
+  "past7_before_mean_pct": {
+   "min": 13.9155,
+   "max": 28.9426
+  },
+  "past7_available_count": {
+   "min": 0.0,
+   "max": 7.0
+  },
+  "past7_rain_mm": {
+   "min": 0.0,
+   "max": 24.2398
+  },
+  "air_temp_observed_C": {
+   "min": 11.654,
+   "max": 39.555
+  },
+  "humidity_observed_pct": {
+   "min": 12.0,
+   "max": 75.775
+  },
+  "et0_forecast_24h_mm": {
+   "min": 0.5,
+   "max": 9.231
+  },
+  "rain_forecast_24h_mm": {
+   "min": 0.0,
+   "max": 15.241
+  },
+  "doy_sin": {
+   "min": -0.999999,
+   "max": 0.999986
+  },
+  "doy_cos": {
+   "min": -0.999979,
+   "max": 0.999991
+  },
+  "planned_volume_L": {
+   "min": 0.0,
+   "max": 32735.1612
+  },
+  "planned_duration_min": {
+   "min": 0.0,
+   "max": 102.2974
+  }
+ },
+ "software": {
+  "scikit-learn": "1.9.1",
+  "pandas": "3.0.5",
+  "seed": 42603
+ },
+ "not_available": [
+  "feature_manifest.json و README_AR.md وكود الحزمة لم تُرفق؛ المدخلات من ورقة Dictionary.",
+  "معادلة simple_water_balance غير موثقة في الملف؛ نتائجها معروضة كما أوردها الملف دون إعادة حساب."
+ ],
+ "limitations": [
+  "كل السجلات SIMULATED بالبذرة 42603؛ المقاييس تقيس تعلم المحاكاة لا دقة ميدانية ولا توفير ماء.",
+  "نفس المناطق الأربع في كل الأجزاء؛ التقسيم الزمني لا يثبت التعميم على مزرعة جديدة.",
+  "خصائص المنطقة (المحصول، التربة، العمق، الكفاءة…) ثابتة لكل منطقة، فهي تعمل عمليًا كمعرّف للمنطقة.",
+  "مجموعة مستقلة عن نظام البرمودا: لا ترتبط بقراراته أو قاعدة أحداثه، ولا يغذيها محرك القرار rule_v1."
+ ]
+}

@@ -1,0 +1,13 @@
+﻿file,group,format,read_with,height,width,mean_r,mean_g,mean_b,std_r,std_g,std_b,brightness,contrast,green_cover_pct
+rabigh_kaec\IMG_1762.PNG,rabigh_kaec,PNG,pillow,1690,1290,133.27,163.65,165.47,55.69,59.59,78.29,154.33,57.87,16.81
+rabigh_kaec\IMG_1763.PNG,rabigh_kaec,PNG,pillow,1711,1290,141.94,166.09,150.79,51.85,57.09,85.48,156.71,57.46,35.02
+rabigh_kaec\IMG_1764.PNG,rabigh_kaec,PNG,pillow,1711,1290,151.23,173.03,160.57,51.27,54.94,76.55,164.7,54.94,19.85
+rabigh_kaec\IMG_1765.PNG,rabigh_kaec,PNG,pillow,2276,1290,106.8,104.91,95.2,52.27,55.6,66.25,103.88,53.5,29.65
+rabigh_kaec\IMG_1766.PNG,rabigh_kaec,PNG,pillow,2293,1290,112.55,113.55,96.0,56.87,58.39,77.63,110.71,57.95,40.98
+rabigh_kaec\IMG_1767.PNG,rabigh_kaec,PNG,pillow,2291,1290,108.8,107.53,70.75,67.98,66.32,62.93,103.15,64.84,62.67
+rabigh_kaec\IMG_1768.PNG,rabigh_kaec,PNG,pillow,1186,1290,83.44,88.55,49.07,41.98,39.3,38.06,82.02,38.62,70.72
+unlabeled\C400E232-ED77-4BBE-AF55-621C54A33A4C.jpg,unlabeled,JPEG,pillow,2293,1290,118.62,126.11,138.95,49.6,51.35,71.06,124.82,49.23,4.66
+unlabeled\IMG_1769.PNG,unlabeled,PNG,pillow,1124,1290,78.83,82.4,48.38,41.57,39.02,35.68,76.97,38.49,53.45
+unlabeled\IMG_1808.HEIC,unlabeled,HEIC,converted-jpg (IMG_1808_converted.jpg),5712,4284,117.17,117.66,131.85,66.01,64.53,77.59,128.96,66.81,16.19
+unlabeled\IMG_1809.HEIC,unlabeled,HEIC,converted-jpg (IMG_1809_converted.jpg),5712,4284,127.03,130.49,142.85,62.62,63.63,85.89,139.7,65.78,20.85
+unlabeled\IMG_2181.HEIC,unlabeled,HEIC,converted-jpg (IMG_2181_converted.jpg),4032,3024,130.81,113.4,101.87,66.03,61.68,57.0,116.51,62.51,6.41

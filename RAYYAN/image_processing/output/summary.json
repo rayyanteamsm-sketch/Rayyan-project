@@ -1,0 +1,21 @@
+{
+ "source": "C:\\Users\\mmsbm\\OneDrive\\Desktop\\ريااان\\RAYYAN\\data\\processed\\images\\originals",
+ "images_found": 12,
+ "processed": 12,
+ "failed": [],
+ "unsupported_skipped": [],
+ "heic_derived_copies": {
+  "unlabeled\\IMG_1808.HEIC": "unlabeled\\IMG_1808_converted.jpg",
+  "unlabeled\\IMG_1809.HEIC": "unlabeled\\IMG_1809_converted.jpg",
+  "unlabeled\\IMG_2181.HEIC": "unlabeled\\IMG_2181_converted.jpg"
+ },
+ "heic_backend": "converted-jpg",
+ "batch_shape": [
+  12,
+  512,
+  512,
+  3
+ ],
+ "originals_unchanged": true,
+ "seconds": 34.2
+}

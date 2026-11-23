@@ -1,0 +1,12 @@
+# ريّان — الإصدارات التي اختُبر بها المشروع فعليًا (Python 3.14 على Windows 11)
+fastapi==0.164.0
+starlette==1.10.0
+uvicorn==0.54.0
+pydantic==2.14.3
+scikit-learn==1.9.1
+pandas==3.0.3
+numpy==2.5.1
+joblib==1.6.0
+openpyxl==3.1.5
+pillow==12.3.0
+pillow-heif==1.8.1   # فك صور HEIC عند إعادة البناء من الملف الأصلي (run.bat --rebuild)

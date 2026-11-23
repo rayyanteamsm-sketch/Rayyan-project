@@ -1,0 +1,1814 @@
+{
+ "model_version": "crops-rf-hybrid-20261119-2eb1979d",
+ "trained_at": "2026-11-19T17:38:21+00:00",
+ "dataset": "RAYYAN ML dataset v2 — المحاصيل الأربع (RAYYAN_ML_Ready.xlsx)",
+ "task": "regression",
+ "target": "target_after_6h_VWC_pct",
+ "target_unit": "VWC % (نقطة مئوية)",
+ "horizon": "6 ساعات بعد قرار 06:00 UTC",
+ "algorithm": "Random Forest — هجين: تصحيح موازنة الماء (المستخدم، تدريب+تحقق)",
+ "family": "rf",
+ "target_mode": "hybrid",
+ "params": {
+  "max_depth": 12,
+  "min_samples_leaf": 1,
+  "max_features": 1.0
+ },
+ "features": [
+  "crop",
+  "irrigation_system",
+  "soil_type",
+  "area_m2",
+  "root_depth_m",
+  "wilting_pct",
+  "field_capacity_pct",
+  "efficiency",
+  "nominal_flow_L_min",
+  "kc_assumed",
+  "before_VWC_pct",
+  "before_missing",
+  "lag1_before_VWC_pct",
+  "past7_before_mean_pct",
+  "past7_available_count",
+  "past7_rain_mm",
+  "air_temp_observed_C",
+  "humidity_observed_pct",
+  "et0_forecast_24h_mm",
+  "rain_forecast_24h_mm",
+  "doy_sin",
+  "doy_cos",
+  "planned_volume_L",
+  "planned_duration_min"
+ ],
+ "numeric_features": [
+  "area_m2",
+  "root_depth_m",
+  "wilting_pct",
+  "field_capacity_pct",
+  "efficiency",
+  "nominal_flow_L_min",
+  "kc_assumed",
+  "before_VWC_pct",
+  "before_missing",
+  "lag1_before_VWC_pct",
+  "past7_before_mean_pct",
+  "past7_available_count",
+  "past7_rain_mm",
+  "air_temp_observed_C",
+  "humidity_observed_pct",
+  "et0_forecast_24h_mm",
+  "rain_forecast_24h_mm",
+  "doy_sin",
+  "doy_cos",
+  "planned_volume_L",
+  "planned_duration_min"
+ ],
+ "categorical_features": [
+  "crop",
+  "irrigation_system",
+  "soil_type"
+ ],
+ "feature_descriptions_ar": {
+  "event_id": "معرف فريد للقرار اليومي",
+  "zone_id": "معرف المنطقة؛ للاختبار حسب المنطقة وليس ضمن النموذج الحالي",
+  "feature_cutoff_at": "وقت القرار وآخر وقت مسموح للمدخلات؛ UTC",
+  "weather_id": "معرف سجل توقع الطقس المرتبط",
+  "temporal_split": "train / validation / test / gap؛ لا يدخل النموذج",
+  "provenance": "SIMULATED لكل السجلات",
+  "crop": "المحصول كما في الملف الأصلي",
+  "irrigation_system": "نظام الري كما في الأصل",
+  "soil_type": "نوع التربة كما في الأصل",
+  "area_m2": "المساحة الأصلية",
+  "root_depth_m": "عمق الجذور الأصلي المفترض",
+  "wilting_pct": "المحتوى الحجمي عند نقطة الذبول في الأصل",
+  "field_capacity_pct": "المحتوى الحجمي عند السعة الحقلية في الأصل",
+  "efficiency": "كفاءة الري الاسمية من الأصل؛ ليست الكفاءة الفعلية الخفية",
+  "nominal_flow_L_min": "التدفق الاسمي من الأصل",
+  "kc_assumed": "معامل محصول مفترض للمحاكاة؛ غير معاير",
+  "before_VWC_pct": "قراءة الحساس عند القرار؛ فارغة عند فقده",
+  "before_missing": "1 عند فقد قراءة الحساس الحالية، وإلا 0",
+  "lag1_before_VWC_pct": "قراءة المنطقة في اليوم السابق فقط",
+  "past7_before_mean_pct": "متوسط القراءات المتاحة في الأيام السبعة السابقة فقط",
+  "past7_available_count": "عدد القراءات المتاحة ضمن نافذة الأيام السابقة؛ من 0 إلى 7",
+  "past7_rain_mm": "مجموع المطر المتحقق خلال الأيام السبعة السابقة المنتهية",
+  "air_temp_observed_C": "درجة حرارة الهواء المشاهدة عند القرار في المحاكاة",
+  "humidity_observed_pct": "الرطوبة الجوية المشاهدة عند القرار في المحاكاة",
+  "et0_forecast_24h_mm": "توقع افتراضي للبخر النتح المرجعي خلال اليوم التالي؛ ليس FAO PM",
+  "rain_forecast_24h_mm": "توقع افتراضي للمطر خلال اليوم التالي",
+  "doy_sin": "ترميز موسمي جيبي لرقم اليوم في السنة",
+  "doy_cos": "ترميز موسمي جيب تمام لرقم اليوم في السنة",
+  "planned_volume_L": "الفعل المخطط المعروف قبل التنفيذ؛ ليس كمية مثلى مثبتة",
+  "planned_duration_min": "مدة الخطة؛ حجم الخطة مقسومًا على التدفق الاسمي",
+  "measured_at": "وقت توفر الهدف بعد 6 ساعات؛ UTC",
+  "target_after_6h_VWC_pct": "هدف الانحدار؛ قراءة الحساس بعد 6 ساعات",
+  "label_quality": "valid أو missing؛ لتنقية الأهداف فقط"
+ },
+ "feature_units": {
+  "event_id": "text / identifier",
+  "zone_id": "text / identifier",
+  "feature_cutoff_at": "UTC datetime",
+  "weather_id": "text / identifier",
+  "temporal_split": "text / identifier",
+  "provenance": "text / identifier",
+  "crop": "text / identifier",
+  "irrigation_system": "text / identifier",
+  "soil_type": "text / identifier",
+  "area_m2": "m²",
+  "root_depth_m": "m",
+  "wilting_pct": "VWC % (0–100)",
+  "field_capacity_pct": "VWC % (0–100)",
+  "efficiency": "dimensionless",
+  "nominal_flow_L_min": "L/min",
+  "kc_assumed": "dimensionless",
+  "before_VWC_pct": "VWC % (0–100)",
+  "before_missing": "0/1",
+  "lag1_before_VWC_pct": "VWC % (0–100)",
+  "past7_before_mean_pct": "VWC % (0–100)",
+  "past7_available_count": "count",
+  "past7_rain_mm": "mm",
+  "air_temp_observed_C": "°C",
+  "humidity_observed_pct": "% RH",
+  "et0_forecast_24h_mm": "mm",
+  "rain_forecast_24h_mm": "mm",
+  "doy_sin": "dimensionless",
+  "doy_cos": "dimensionless",
+  "planned_volume_L": "L",
+  "planned_duration_min": "min",
+  "measured_at": "UTC datetime",
+  "target_after_6h_VWC_pct": "VWC % (0–100)",
+  "label_quality": "text / identifier"
+ },
+ "forbidden_inputs": [
+  "target_after_6h_VWC_pct",
+  "measured_at",
+  "label_quality",
+  "actual_volume_L",
+  "actual_duration_min",
+  "actual_flow_L_min",
+  "simulated_fault_label",
+  "et0_realized_24h_mm",
+  "rain_realized_24h_mm",
+  "event_id",
+  "true_before_pct",
+  "true_after_6h_pct",
+  "true_next_day_pct",
+  "effective_efficiency",
+  "effective_rain_mm",
+  "actual_et_24h_mm",
+  "drainage_24h_mm",
+  "water_balance_residual_mm",
+  "provenance"
+ ],
+ "data": {
+  "source": "SQLite v2_ml_ready (من الورقة ML_Ready)",
+  "data_hash_sha256": "2eb1979d5abd2630fc79a8c563b481f7e9e0b8b314ca18bf73ef99bcf6c2f7c0",
+  "checks": {
+   "features_from_dictionary": 24,
+   "features_exclude_forbidden": true,
+   "no_identifier_inputs": true,
+   "decision_before_measurement": true,
+   "weather_issued_before_decision": true,
+   "features_use_forecast_not_realized": true,
+   "train_before_validation": true,
+   "validation_before_test": true,
+   "lag1_is_previous_day_reading": true,
+   "split_periods": {
+    "gap": [
+     "2026-02-21",
+     "2026-06-16"
+    ],
+    "test": [
+     "2026-06-17",
+     "2026-10-04"
+    ],
+    "train": [
+     "2024-10-05",
+     "2026-02-20"
+    ],
+    "validation": [
+     "2026-02-28",
+     "2026-06-09"
+    ]
+   },
+   "rows_total": 2920,
+   "gap_rows_excluded": 56,
+   "missing_targets_dropped": 64,
+   "missing_current_reading": 58
+  },
+  "counts": {
+   "train": 1973,
+   "validation": 395,
+   "test": 433,
+   "deployed_fit": 2368,
+   "gap_excluded": 56,
+   "missing_targets": 64
+  },
+  "label_origin": "SIMULATED — ليست قياسات ميدانية"
+ },
+ "selection": {
+  "method": "أقل RMSE على التحقق بين المرشحين الذين تكون استجابتهم للكمية رتيبة في ≥ 99.0% من صفوف التحقق؛ الاختبار لم يدخل أي اختيار",
+  "n_candidates": 57,
+  "n_eligible": 39,
+  "monotonic_min_pct": 99.0,
+  "grids": {
+   "ridge": {
+    "alpha": [
+     0.1,
+     1.0,
+     10.0
+    ]
+   },
+   "rf": {
+    "max_depth": [
+     null,
+     12
+    ],
+    "min_samples_leaf": [
+     1,
+     3
+    ],
+    "max_features": [
+     0.5,
+     1.0
+    ]
+   },
+   "hgb": {
+    "learning_rate": [
+     0.05,
+     0.1
+    ],
+    "max_leaf_nodes": [
+     15,
+     31
+    ],
+    "l2_regularization": [
+     0.0,
+     1.0
+    ]
+   }
+  },
+  "best": {
+   "family": "rf",
+   "target_mode": "hybrid",
+   "params": {
+    "max_depth": 12,
+    "min_samples_leaf": 1,
+    "max_features": 1.0
+   },
+   "mae": 0.4380498770188643,
+   "rmse": 0.6308114103015575,
+   "r2": 0.9775925752232179,
+   "monotonic_val_pct": 100.0
+  },
+  "best_without_constraint": {
+   "family": "rf",
+   "target_mode": "hybrid",
+   "params": {
+    "max_depth": 12,
+    "min_samples_leaf": 1,
+    "max_features": 1.0
+   },
+   "mae": 0.4380498770188643,
+   "rmse": 0.6308114103015575,
+   "r2": 0.9775925752232179,
+   "monotonic_val_pct": 100.0
+  },
+  "all": [
+   {
+    "family": "rf",
+    "target_mode": "hybrid",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 1,
+     "max_features": 1.0
+    },
+    "mae": 0.4380498770188643,
+    "rmse": 0.6308114103015575,
+    "r2": 0.9775925752232179,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.66
+   },
+   {
+    "family": "rf",
+    "target_mode": "hybrid",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 1,
+     "max_features": 1.0
+    },
+    "mae": 0.4404035331803234,
+    "rmse": 0.6353452583937147,
+    "r2": 0.9772693187145822,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.95
+   },
+   {
+    "family": "rf",
+    "target_mode": "hybrid",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "mae": 0.4419076026159784,
+    "rmse": 0.6396962655336107,
+    "r2": 0.976956921616553,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.65
+   },
+   {
+    "family": "rf",
+    "target_mode": "hybrid",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "mae": 0.44400970577798105,
+    "rmse": 0.6440407138608035,
+    "r2": 0.9766428681770211,
+    "monotonic_val_pct": 99.74683544303798,
+    "fit_seconds": 0.79
+   },
+   {
+    "family": "rf",
+    "target_mode": "hybrid",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 1,
+     "max_features": 0.5
+    },
+    "mae": 0.4418978632085211,
+    "rmse": 0.6453297913350917,
+    "r2": 0.9765492738303172,
+    "monotonic_val_pct": 99.74683544303798,
+    "fit_seconds": 0.55
+   },
+   {
+    "family": "rf",
+    "target_mode": "hybrid",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 3,
+     "max_features": 0.5
+    },
+    "mae": 0.4455569920443415,
+    "rmse": 0.6504703009256206,
+    "r2": 0.9761741824823165,
+    "monotonic_val_pct": 99.74683544303798,
+    "fit_seconds": 0.56
+   },
+   {
+    "family": "rf",
+    "target_mode": "hybrid",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 1,
+     "max_features": 0.5
+    },
+    "mae": 0.44503353880552743,
+    "rmse": 0.6514917758844067,
+    "r2": 0.9760992933281865,
+    "monotonic_val_pct": 98.73417721518987,
+    "fit_seconds": 0.68
+   },
+   {
+    "family": "rf",
+    "target_mode": "hybrid",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 3,
+     "max_features": 0.5
+    },
+    "mae": 0.44709533874304674,
+    "rmse": 0.6580832965889111,
+    "r2": 0.9756132120583533,
+    "monotonic_val_pct": 98.48101265822785,
+    "fit_seconds": 0.57
+   },
+   {
+    "family": "hgb",
+    "target_mode": "hybrid",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.4797236433817366,
+    "rmse": 0.6677940934192172,
+    "r2": 0.9748881902018635,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.44
+   },
+   {
+    "family": "hgb",
+    "target_mode": "hybrid",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.47650408432395,
+    "rmse": 0.670217441477178,
+    "r2": 0.9747056037627669,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.42
+   },
+   {
+    "family": "hgb",
+    "target_mode": "hybrid",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.47303497337527056,
+    "rmse": 0.6731447151660461,
+    "r2": 0.9744841672133293,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.28
+   },
+   {
+    "family": "hgb",
+    "target_mode": "hybrid",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.4805119455171389,
+    "rmse": 0.6767283557001667,
+    "r2": 0.974211765245799,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.26
+   },
+   {
+    "family": "rf",
+    "target_mode": "absolute",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 1,
+     "max_features": 1.0
+    },
+    "mae": 0.49178674786511095,
+    "rmse": 0.6774710728039692,
+    "r2": 0.9741551284183784,
+    "monotonic_val_pct": 86.07594936708861,
+    "fit_seconds": 0.59
+   },
+   {
+    "family": "rf",
+    "target_mode": "absolute",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 1,
+     "max_features": 1.0
+    },
+    "mae": 0.4916198556962024,
+    "rmse": 0.6776388202720762,
+    "r2": 0.9741423280238304,
+    "monotonic_val_pct": 84.81012658227847,
+    "fit_seconds": 0.73
+   },
+   {
+    "family": "rf",
+    "target_mode": "absolute",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "mae": 0.49179384192693487,
+    "rmse": 0.680484234618971,
+    "r2": 0.973924718697237,
+    "monotonic_val_pct": 89.1139240506329,
+    "fit_seconds": 0.54
+   },
+   {
+    "family": "rf",
+    "target_mode": "absolute",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "mae": 0.49179566762582755,
+    "rmse": 0.6813504005041903,
+    "r2": 0.9738582957232943,
+    "monotonic_val_pct": 87.84810126582279,
+    "fit_seconds": 0.58
+   },
+   {
+    "family": "hgb",
+    "target_mode": "absolute",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.5136656778088398,
+    "rmse": 0.6879013286704093,
+    "r2": 0.9733531938238593,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.5
+   },
+   {
+    "family": "hgb",
+    "target_mode": "hybrid",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.4954812480525935,
+    "rmse": 0.6887176296429854,
+    "r2": 0.9732899152144696,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.4
+   },
+   {
+    "family": "hgb",
+    "target_mode": "hybrid",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.502992346165032,
+    "rmse": 0.692898371196164,
+    "r2": 0.9729646530545419,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.36
+   },
+   {
+    "family": "hgb",
+    "target_mode": "hybrid",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.49659154172936465,
+    "rmse": 0.6991254765558366,
+    "r2": 0.972476534006312,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.27
+   },
+   {
+    "family": "hgb",
+    "target_mode": "hybrid",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.49308291190227005,
+    "rmse": 0.7003746821456186,
+    "r2": 0.9723780876294558,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.21
+   },
+   {
+    "family": "hgb",
+    "target_mode": "delta",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.5074295878754136,
+    "rmse": 0.7019445473923449,
+    "r2": 0.9722541217599074,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.29
+   },
+   {
+    "family": "hgb",
+    "target_mode": "delta",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.5046120165160103,
+    "rmse": 0.7040118036226379,
+    "r2": 0.9720904555543762,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.34
+   },
+   {
+    "family": "hgb",
+    "target_mode": "absolute",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.5199212958239117,
+    "rmse": 0.705196158791977,
+    "r2": 0.9719964724221823,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.52
+   },
+   {
+    "family": "hgb",
+    "target_mode": "absolute",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.522872947236635,
+    "rmse": 0.7060466288889891,
+    "r2": 0.9719288869036725,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.32
+   },
+   {
+    "family": "hgb",
+    "target_mode": "absolute",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.524355785355636,
+    "rmse": 0.7062932959980606,
+    "r2": 0.9719092694178908,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.33
+   },
+   {
+    "family": "hgb",
+    "target_mode": "delta",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.5098245836415429,
+    "rmse": 0.7088034919992181,
+    "r2": 0.9717092433282118,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.49
+   },
+   {
+    "family": "hgb",
+    "target_mode": "absolute",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.5263711676633648,
+    "rmse": 0.709519568312418,
+    "r2": 0.9716520523745366,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.37
+   },
+   {
+    "family": "hgb",
+    "target_mode": "delta",
+    "params": {
+     "learning_rate": 0.05,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.5082526387692479,
+    "rmse": 0.7128308354011386,
+    "r2": 0.9713868400638559,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.5
+   },
+   {
+    "family": "hgb",
+    "target_mode": "absolute",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.5408362539951943,
+    "rmse": 0.7163453926567123,
+    "r2": 0.9711039945642451,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.36
+   },
+   {
+    "family": "hgb",
+    "target_mode": "delta",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.5148803990130014,
+    "rmse": 0.7187447956262858,
+    "r2": 0.9709100957051965,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.27
+   },
+   {
+    "family": "hgb",
+    "target_mode": "delta",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.5184655020164245,
+    "rmse": 0.718949336768928,
+    "r2": 0.9708935364787775,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.24
+   },
+   {
+    "family": "rf",
+    "target_mode": "delta",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 1,
+     "max_features": 1.0
+    },
+    "mae": 0.48927041097046425,
+    "rmse": 0.7189736525985335,
+    "r2": 0.970891567606314,
+    "monotonic_val_pct": 91.64556962025317,
+    "fit_seconds": 0.81
+   },
+   {
+    "family": "rf",
+    "target_mode": "delta",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 1,
+     "max_features": 1.0
+    },
+    "mae": 0.49031922729131633,
+    "rmse": 0.7193972309315608,
+    "r2": 0.9708572594415997,
+    "monotonic_val_pct": 93.67088607594937,
+    "fit_seconds": 0.62
+   },
+   {
+    "family": "rf",
+    "target_mode": "absolute",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 1,
+     "max_features": 0.5
+    },
+    "mae": 0.5249093942370269,
+    "rmse": 0.7236009021267799,
+    "r2": 0.9705156834211677,
+    "monotonic_val_pct": 88.35443037974684,
+    "fit_seconds": 0.54
+   },
+   {
+    "family": "rf",
+    "target_mode": "delta",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 1,
+     "max_features": 0.5
+    },
+    "mae": 0.4896237122362868,
+    "rmse": 0.7246824522704911,
+    "r2": 0.9704274784494661,
+    "monotonic_val_pct": 93.67088607594937,
+    "fit_seconds": 0.35
+   },
+   {
+    "family": "rf",
+    "target_mode": "absolute",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 1,
+     "max_features": 0.5
+    },
+    "mae": 0.5230667586497892,
+    "rmse": 0.7248554057490093,
+    "r2": 0.970413361146664,
+    "monotonic_val_pct": 85.0632911392405,
+    "fit_seconds": 0.34
+   },
+   {
+    "family": "hgb",
+    "target_mode": "absolute",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.5396802271178562,
+    "rmse": 0.7249326680458964,
+    "r2": 0.9704070535341788,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.26
+   },
+   {
+    "family": "hgb",
+    "target_mode": "delta",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 0.0
+    },
+    "mae": 0.5314908798089198,
+    "rmse": 0.7258417274426907,
+    "r2": 0.9703327883933445,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.39
+   },
+   {
+    "family": "rf",
+    "target_mode": "delta",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 1,
+     "max_features": 0.5
+    },
+    "mae": 0.49064017711636765,
+    "rmse": 0.7267771350051218,
+    "r2": 0.9702562735977612,
+    "monotonic_val_pct": 93.41772151898734,
+    "fit_seconds": 0.55
+   },
+   {
+    "family": "hgb",
+    "target_mode": "absolute",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 15,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.5363985955452465,
+    "rmse": 0.7281178307086134,
+    "r2": 0.9701464350644393,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 1.28
+   },
+   {
+    "family": "ridge",
+    "target_mode": "hybrid",
+    "params": {
+     "alpha": 10.0
+    },
+    "mae": 0.4893538940395287,
+    "rmse": 0.7290642031748416,
+    "r2": 0.9700687801812319,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.01
+   },
+   {
+    "family": "ridge",
+    "target_mode": "hybrid",
+    "params": {
+     "alpha": 1.0
+    },
+    "mae": 0.48956257972227857,
+    "rmse": 0.7300846266599154,
+    "r2": 0.9699849360048466,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.01
+   },
+   {
+    "family": "ridge",
+    "target_mode": "hybrid",
+    "params": {
+     "alpha": 0.1
+    },
+    "mae": 0.48958610851685774,
+    "rmse": 0.7302023300048918,
+    "r2": 0.9699752572413562,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.01
+   },
+   {
+    "family": "hgb",
+    "target_mode": "delta",
+    "params": {
+     "learning_rate": 0.1,
+     "max_leaf_nodes": 31,
+     "l2_regularization": 1.0
+    },
+    "mae": 0.5238436308239912,
+    "rmse": 0.7326965499489175,
+    "r2": 0.9697697903163592,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 2.39
+   },
+   {
+    "family": "rf",
+    "target_mode": "absolute",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 3,
+     "max_features": 0.5
+    },
+    "mae": 0.5353002626281442,
+    "rmse": 0.7402941880921087,
+    "r2": 0.969139600344816,
+    "monotonic_val_pct": 88.60759493670885,
+    "fit_seconds": 0.51
+   },
+   {
+    "family": "rf",
+    "target_mode": "delta",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "mae": 0.49874726907024564,
+    "rmse": 0.7423371284462262,
+    "r2": 0.9689690385636516,
+    "monotonic_val_pct": 92.40506329113924,
+    "fit_seconds": 0.59
+   },
+   {
+    "family": "rf",
+    "target_mode": "delta",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "mae": 0.4984316672161375,
+    "rmse": 0.7427774126366052,
+    "r2": 0.9689322183835924,
+    "monotonic_val_pct": 93.16455696202532,
+    "fit_seconds": 0.57
+   },
+   {
+    "family": "rf",
+    "target_mode": "delta",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 3,
+     "max_features": 0.5
+    },
+    "mae": 0.4955641393613339,
+    "rmse": 0.7464417502411013,
+    "r2": 0.9686249294205986,
+    "monotonic_val_pct": 94.9367088607595,
+    "fit_seconds": 0.55
+   },
+   {
+    "family": "rf",
+    "target_mode": "absolute",
+    "params": {
+     "max_depth": null,
+     "min_samples_leaf": 3,
+     "max_features": 0.5
+    },
+    "mae": 0.5356240563320681,
+    "rmse": 0.7474860819207436,
+    "r2": 0.9685370755424915,
+    "monotonic_val_pct": 88.35443037974684,
+    "fit_seconds": 0.54
+   },
+   {
+    "family": "rf",
+    "target_mode": "delta",
+    "params": {
+     "max_depth": 12,
+     "min_samples_leaf": 3,
+     "max_features": 0.5
+    },
+    "mae": 0.49890248180496233,
+    "rmse": 0.75029474219547,
+    "r2": 0.9683001890245505,
+    "monotonic_val_pct": 95.69620253164557,
+    "fit_seconds": 0.53
+   },
+   {
+    "family": "ridge",
+    "target_mode": "absolute",
+    "params": {
+     "alpha": 0.1
+    },
+    "mae": 0.62168711702277,
+    "rmse": 0.8411506664688405,
+    "r2": 0.960158062200133,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.03
+   },
+   {
+    "family": "ridge",
+    "target_mode": "absolute",
+    "params": {
+     "alpha": 1.0
+    },
+    "mae": 0.6218093275222508,
+    "rmse": 0.8411889119996214,
+    "r2": 0.9601544390425684,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.01
+   },
+   {
+    "family": "ridge",
+    "target_mode": "absolute",
+    "params": {
+     "alpha": 10.0
+    },
+    "mae": 0.6243468855673492,
+    "rmse": 0.8435563241601995,
+    "r2": 0.9599298435803008,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.01
+   },
+   {
+    "family": "ridge",
+    "target_mode": "delta",
+    "params": {
+     "alpha": 10.0
+    },
+    "mae": 0.6342875372330915,
+    "rmse": 0.9057872185283129,
+    "r2": 0.9537996524519918,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.01
+   },
+   {
+    "family": "ridge",
+    "target_mode": "delta",
+    "params": {
+     "alpha": 1.0
+    },
+    "mae": 0.6367661333950232,
+    "rmse": 0.9118339230783973,
+    "r2": 0.9531807602924319,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.01
+   },
+   {
+    "family": "ridge",
+    "target_mode": "delta",
+    "params": {
+     "alpha": 0.1
+    },
+    "mae": 0.6371973152410245,
+    "rmse": 0.9126403143534241,
+    "r2": 0.9530979133620291,
+    "monotonic_val_pct": 100.0,
+    "fit_seconds": 0.01
+   }
+  ],
+  "water_balance_cap_chosen_on_validation": "saturation"
+ },
+ "results": [
+  {
+   "model_id": "median",
+   "label_ar": "خط أساس: الوسيط",
+   "family": "baseline",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 3.332614430379747,
+   "rmse": 4.223144588396936,
+   "r2": -0.004303017946640786
+  },
+  {
+   "model_id": "persistence",
+   "label_ar": "خط أساس: الرطوبة الحالية تبقى كما هي",
+   "family": "baseline",
+   "split": "validation",
+   "trained_on": "none",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 1.322473417721519,
+   "rmse": 1.8675125144955438,
+   "r2": 0.8036097568013938
+  },
+  {
+   "model_id": "water_balance",
+   "label_ar": "خط أساس فيزيائي: موازنة ماء 6 ساعات (سقف: التشبع)",
+   "family": "baseline",
+   "split": "validation",
+   "trained_on": "none (معادلة)",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.5134170721392405,
+   "rmse": 0.7872410626703525,
+   "r2": 0.9651013727458452
+  },
+  {
+   "model_id": "median",
+   "label_ar": "خط أساس: الوسيط",
+   "family": "baseline",
+   "split": "test",
+   "trained_on": "train+validation",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 3.394316166281756,
+   "rmse": 4.326035896233009,
+   "r2": -0.013566561239674924
+  },
+  {
+   "model_id": "persistence",
+   "label_ar": "خط أساس: الرطوبة الحالية تبقى كما هي",
+   "family": "baseline",
+   "split": "test",
+   "trained_on": "none",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 1.6308385681293303,
+   "rmse": 2.2266601312849796,
+   "r2": 0.731477981695061
+  },
+  {
+   "model_id": "water_balance",
+   "label_ar": "خط أساس فيزيائي: موازنة ماء 6 ساعات (سقف: التشبع)",
+   "family": "baseline",
+   "split": "test",
+   "trained_on": "none (معادلة)",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.4707018290146267,
+   "rmse": 0.6610916972235651,
+   "r2": 0.9763301534577018
+  },
+  {
+   "model_id": "rf_hybrid",
+   "label_ar": "Random Forest — هجين: تصحيح موازنة الماء",
+   "family": "rf",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.4380498770188643,
+   "rmse": 0.6308114103015575,
+   "r2": 0.9775925752232179
+  },
+  {
+   "model_id": "rf_hybrid",
+   "label_ar": "Random Forest — هجين: تصحيح موازنة الماء",
+   "family": "rf",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.4656245628794038,
+   "rmse": 0.6438462859838666,
+   "r2": 0.9775489619294692
+  },
+  {
+   "model_id": "hgb_hybrid",
+   "label_ar": "HistGradientBoosting + قيد رتابة — هجين: تصحيح موازنة الماء",
+   "family": "hgb",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.4797236433817366,
+   "rmse": 0.6677940934192172,
+   "r2": 0.9748881902018635
+  },
+  {
+   "model_id": "hgb_hybrid",
+   "label_ar": "HistGradientBoosting + قيد رتابة — هجين: تصحيح موازنة الماء",
+   "family": "hgb",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.5139437781367889,
+   "rmse": 0.7015736176196488,
+   "r2": 0.9733425541867545
+  },
+  {
+   "model_id": "rf_absolute",
+   "label_ar": "Random Forest — هدف مطلق",
+   "family": "rf",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.49178674786511034,
+   "rmse": 0.6774710728039687,
+   "r2": 0.9741551284183784
+  },
+  {
+   "model_id": "rf_absolute",
+   "label_ar": "Random Forest — هدف مطلق",
+   "family": "rf",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.5495184885172262,
+   "rmse": 0.7643085955961219,
+   "r2": 0.9683619633898555
+  },
+  {
+   "model_id": "hgb_absolute",
+   "label_ar": "HistGradientBoosting + قيد رتابة — هدف مطلق",
+   "family": "hgb",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.5136656778088398,
+   "rmse": 0.6879013286704093,
+   "r2": 0.9733531938238593
+  },
+  {
+   "model_id": "hgb_absolute",
+   "label_ar": "HistGradientBoosting + قيد رتابة — هدف مطلق",
+   "family": "hgb",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.5436568382702224,
+   "rmse": 0.7654390448430062,
+   "r2": 0.9682683058172772
+  },
+  {
+   "model_id": "hgb_delta",
+   "label_ar": "HistGradientBoosting + قيد رتابة — هدف التغير",
+   "family": "hgb",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.5074295878754136,
+   "rmse": 0.7019445473923449,
+   "r2": 0.9722541217599074
+  },
+  {
+   "model_id": "hgb_delta",
+   "label_ar": "HistGradientBoosting + قيد رتابة — هدف التغير",
+   "family": "hgb",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.544932113708236,
+   "rmse": 0.7691632804653025,
+   "r2": 0.9679587741846389
+  },
+  {
+   "model_id": "rf_delta",
+   "label_ar": "Random Forest — هدف التغير",
+   "family": "rf",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.4892704109704643,
+   "rmse": 0.7189736525985335,
+   "r2": 0.970891567606314
+  },
+  {
+   "model_id": "rf_delta",
+   "label_ar": "Random Forest — هدف التغير",
+   "family": "rf",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.508704427251732,
+   "rmse": 0.7164016529446011,
+   "r2": 0.9722038148965082
+  },
+  {
+   "model_id": "ridge_hybrid",
+   "label_ar": "Ridge (خطي) — هجين: تصحيح موازنة الماء",
+   "family": "ridge",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.4893538940395287,
+   "rmse": 0.7290642031748416,
+   "r2": 0.9700687801812319
+  },
+  {
+   "model_id": "ridge_hybrid",
+   "label_ar": "Ridge (خطي) — هجين: تصحيح موازنة الماء",
+   "family": "ridge",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.48644392135633857,
+   "rmse": 0.6509442126819028,
+   "r2": 0.9770512213483693
+  },
+  {
+   "model_id": "ridge_absolute",
+   "label_ar": "Ridge (خطي) — هدف مطلق",
+   "family": "ridge",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.62168711702277,
+   "rmse": 0.8411506664688405,
+   "r2": 0.960158062200133
+  },
+  {
+   "model_id": "ridge_absolute",
+   "label_ar": "Ridge (خطي) — هدف مطلق",
+   "family": "ridge",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.7281106226145173,
+   "rmse": 0.9936993033721093,
+   "r2": 0.9465211564398168
+  },
+  {
+   "model_id": "ridge_delta",
+   "label_ar": "Ridge (خطي) — هدف التغير",
+   "family": "ridge",
+   "split": "validation",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 395,
+   "mae": 0.6342875372330915,
+   "rmse": 0.9057872185283129,
+   "r2": 0.9537996524519918
+  },
+  {
+   "model_id": "ridge_delta",
+   "label_ar": "Ridge (خطي) — هدف التغير",
+   "family": "ridge",
+   "split": "test",
+   "trained_on": "train",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.7180924256045766,
+   "rmse": 0.9853874934694214,
+   "r2": 0.9474120636632453
+  },
+  {
+   "model_id": "deployed",
+   "label_ar": "Random Forest — هجين: تصحيح موازنة الماء (المستخدم، تدريب+تحقق)",
+   "family": "rf",
+   "split": "test",
+   "trained_on": "train+validation",
+   "source": "computed_here",
+   "n": 433,
+   "mae": 0.46827472980142004,
+   "rmse": 0.6439783218392044,
+   "r2": 0.9775397527563062
+  },
+  {
+   "model_id": "reported_train_median",
+   "label_ar": "مُبلَّغ في الملف: train_median",
+   "family": "reported",
+   "split": "validation",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 395,
+   "mae": 3.332614430379747,
+   "rmse": 4.223144588396936,
+   "r2": -0.0043030179466407
+  },
+  {
+   "model_id": "reported_persistence",
+   "label_ar": "مُبلَّغ في الملف: persistence",
+   "family": "reported",
+   "split": "validation",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 395,
+   "mae": 1.341475443037975,
+   "rmse": 1.8890598414977475,
+   "r2": 0.7990517179019864
+  },
+  {
+   "model_id": "reported_simple_water_balance",
+   "label_ar": "مُبلَّغ في الملف: simple_water_balance",
+   "family": "reported",
+   "split": "validation",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 395,
+   "mae": 0.5694892594725737,
+   "rmse": 1.0189207002218377,
+   "r2": 0.9415380042320372
+  },
+  {
+   "model_id": "reported_random_forest",
+   "label_ar": "مُبلَّغ في الملف: random_forest",
+   "family": "reported",
+   "split": "validation",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 395,
+   "mae": 0.4999670929449284,
+   "rmse": 0.6978259821424013,
+   "r2": 0.9725787570007534
+  },
+  {
+   "model_id": "reported_train_median",
+   "label_ar": "مُبلَّغ في الملف: train_median",
+   "family": "reported",
+   "split": "test",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 433,
+   "mae": 3.391490300230947,
+   "rmse": 4.320955580415226,
+   "r2": -0.0111873786199476
+  },
+  {
+   "model_id": "reported_persistence",
+   "label_ar": "مُبلَّغ في الملف: persistence",
+   "family": "reported",
+   "split": "test",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 433,
+   "mae": 1.6643353348729792,
+   "rmse": 2.279445686740326,
+   "r2": 0.7185958267417847
+  },
+  {
+   "model_id": "reported_simple_water_balance",
+   "label_ar": "مُبلَّغ في الملف: simple_water_balance",
+   "family": "reported",
+   "split": "test",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 433,
+   "mae": 0.5225625938106236,
+   "rmse": 0.947400513366282,
+   "r2": 0.9513884724800366
+  },
+  {
+   "model_id": "reported_random_forest",
+   "label_ar": "مُبلَّغ في الملف: random_forest",
+   "family": "reported",
+   "split": "test",
+   "trained_on": "حسب الملف",
+   "source": "reported_in_file",
+   "n": 433,
+   "mae": 0.5685157666630437,
+   "rmse": 0.8034538537631374,
+   "r2": 0.9650381896181665
+  }
+ ],
+ "headline": {
+  "deployed_test": {
+   "mae": 0.46827472980142004,
+   "rmse": 0.6439783218392044,
+   "r2": 0.9775397527563062
+  },
+  "persistence_test": {
+   "mae": 1.6308385681293303,
+   "rmse": 2.2266601312849796,
+   "r2": 0.731477981695061
+  },
+  "water_balance_test": {
+   "mae": 0.4707018290146267,
+   "rmse": 0.6610916972235651,
+   "r2": 0.9763301534577018
+  },
+  "rmse_reduction_vs_persistence_pct": 71.07873299606024
+ },
+ "error_analysis_test": {
+  "by_zone": {
+   "Z001": {
+    "n": 108,
+    "mae": 0.40977955144400013,
+    "rmse": 0.5207772548017262,
+    "r2": 0.39952596618842395,
+    "persistence_mae": 0.9311611111111112,
+    "crop": "نخيل مجدول",
+    "zone_name": "النخيل والفاكهة"
+   },
+   "Z002": {
+    "n": 109,
+    "mae": 0.4680426177024879,
+    "rmse": 0.5871443820057917,
+    "r2": 0.6953541112899583,
+    "persistence_mae": 1.549483486238532,
+    "crop": "برسيم",
+    "zone_name": "الحقول المفتوحة"
+   },
+   "Z003": {
+    "n": 109,
+    "mae": 0.4440928223769728,
+    "rmse": 0.6279839238026275,
+    "r2": 0.8050028647515886,
+    "persistence_mae": 1.7505412844036694,
+    "crop": "خضار",
+    "zone_name": "البيوت المحمية"
+   },
+   "Z004": {
+    "n": 107,
+    "mae": 0.552186948405623,
+    "rmse": 0.8071866297371902,
+    "r2": 0.7988878542985166,
+    "persistence_mae": 2.2979906542056074,
+    "crop": "نجيل",
+    "zone_name": "المساحات الخضراء"
+   }
+  },
+  "by_missing_reading": {
+   "0": {
+    "n": 421,
+    "mae": 0.4563708983667179
+   },
+   "1": {
+    "n": 12,
+    "mae": 0.8859008159688884
+   }
+  },
+  "by_month": [
+   {
+    "month": "2026-06",
+    "n": 54,
+    "mae": 0.42595331710519607
+   },
+   {
+    "month": "2026-07",
+    "n": 121,
+    "mae": 0.5041924187976149
+   },
+   {
+    "month": "2026-08",
+    "n": 123,
+    "mae": 0.4616876344707966
+   },
+   {
+    "month": "2026-09",
+    "n": 119,
+    "mae": 0.47446424109100416
+   },
+   {
+    "month": "2026-10",
+    "n": 16,
+    "mae": 0.34408577975533916
+   }
+  ]
+ },
+ "response_check_test": {
+  "rows": 433,
+  "monotonic_rows_pct": 98.38337182448036,
+  "mean_gain_planned_vs_none_pp": 1.8813323355844302,
+  "mean_gain_more_vs_planned_pp": 0.5339976593954276
+ },
+ "importance": {
+  "permutation_test": [
+   {
+    "feature": "before_VWC_pct",
+    "rmse_increase": 5.5890683148615885,
+    "std": 0.14184409651159427
+   },
+   {
+    "feature": "planned_volume_L",
+    "rmse_increase": 3.5160935220304723,
+    "std": 0.14131251051765964
+   },
+   {
+    "feature": "area_m2",
+    "rmse_increase": 1.6158452437940192,
+    "std": 0.0892538067447353
+   },
+   {
+    "feature": "root_depth_m",
+    "rmse_increase": 0.6404819026717703,
+    "std": 0.045467665860184886
+   },
+   {
+    "feature": "lag1_before_VWC_pct",
+    "rmse_increase": 0.46010566760508204,
+    "std": 0.11638417197088777
+   },
+   {
+    "feature": "efficiency",
+    "rmse_increase": 0.07373575014262171,
+    "std": 0.009813845411250166
+   },
+   {
+    "feature": "rain_forecast_24h_mm",
+    "rmse_increase": 0.0645362242118708,
+    "std": 0.011140217654007651
+   },
+   {
+    "feature": "wilting_pct",
+    "rmse_increase": 0.040086066304403166,
+    "std": 0.02087507818599355
+   },
+   {
+    "feature": "before_missing",
+    "rmse_increase": 0.005354539856747742,
+    "std": 0.0015654744670674347
+   },
+   {
+    "feature": "planned_duration_min",
+    "rmse_increase": 0.004958347100436311,
+    "std": 0.0040150629114958
+   },
+   {
+    "feature": "doy_cos",
+    "rmse_increase": 0.003405807807147865,
+    "std": 0.002507887271928236
+   },
+   {
+    "feature": "doy_sin",
+    "rmse_increase": 0.0032624798391938437,
+    "std": 0.002081102291131869
+   },
+   {
+    "feature": "et0_forecast_24h_mm",
+    "rmse_increase": 0.002392779820447588,
+    "std": 0.004595166472005081
+   },
+   {
+    "feature": "air_temp_observed_C",
+    "rmse_increase": 0.0014116993997691952,
+    "std": 0.0013510057332614676
+   },
+   {
+    "feature": "past7_available_count",
+    "rmse_increase": 0.001376032984447384,
+    "std": 0.0007051973256034699
+   },
+   {
+    "feature": "past7_before_mean_pct",
+    "rmse_increase": 0.0012058655115111173,
+    "std": 0.0021123450579660047
+   },
+   {
+    "feature": "kc_assumed",
+    "rmse_increase": 0.00102331944133931,
+    "std": 0.0027366188588105835
+   },
+   {
+    "feature": "past7_rain_mm",
+    "rmse_increase": 0.0007431944287866532,
+    "std": 0.0005435361770700574
+   },
+   {
+    "feature": "humidity_observed_pct",
+    "rmse_increase": 0.0001021280152251114,
+    "std": 0.0011051703774885677
+   },
+   {
+    "feature": "crop",
+    "rmse_increase": 1.712185292126467e-05,
+    "std": 0.00023758270617830587
+   },
+   {
+    "feature": "field_capacity_pct",
+    "rmse_increase": -7.799632495116837e-05,
+    "std": 8.502565651077578e-05
+   },
+   {
+    "feature": "nominal_flow_L_min",
+    "rmse_increase": -8.074322410263068e-05,
+    "std": 0.00016552240956655857
+   },
+   {
+    "feature": "irrigation_system",
+    "rmse_increase": -0.00018031920006833513,
+    "std": 0.00015533347690781176
+   },
+   {
+    "feature": "soil_type",
+    "rmse_increase": -0.0002715254120020938,
+    "std": 0.00029303451404166434
+   }
+  ],
+  "note": "Permutation على الاختبار بعد الاختيار — للتفسير فقط"
+ },
+ "feature_ranges": {
+  "area_m2": {
+   "min": 200.0,
+   "max": 800.0
+  },
+  "root_depth_m": {
+   "min": 0.2,
+   "max": 0.6
+  },
+  "wilting_pct": {
+   "min": 8.0,
+   "max": 16.0
+  },
+  "field_capacity_pct": {
+   "min": 22.0,
+   "max": 34.0
+  },
+  "efficiency": {
+   "min": 0.75,
+   "max": 0.92
+  },
+  "nominal_flow_L_min": {
+   "min": 100.0,
+   "max": 320.0
+  },
+  "kc_assumed": {
+   "min": 0.8,
+   "max": 1.05
+  },
+  "before_VWC_pct": {
+   "min": 10.3918,
+   "max": 31.0844
+  },
+  "before_missing": {
+   "min": 0.0,
+   "max": 1.0
+  },
+  "lag1_before_VWC_pct": {
+   "min": 10.3918,
+   "max": 31.0844
+  },
+  "past7_before_mean_pct": {
+   "min": 13.9155,
+   "max": 28.9426
+  },
+  "past7_available_count": {
+   "min": 0.0,
+   "max": 7.0
+  },
+  "past7_rain_mm": {
+   "min": 0.0,
+   "max": 24.2398
+  },
+  "air_temp_observed_C": {
+   "min": 11.654,
+   "max": 39.555
+  },
+  "humidity_observed_pct": {
+   "min": 12.0,
+   "max": 75.775
+  },
+  "et0_forecast_24h_mm": {
+   "min": 0.5,
+   "max": 9.231
+  },
+  "rain_forecast_24h_mm": {
+   "min": 0.0,
+   "max": 15.241
+  },
+  "doy_sin": {
+   "min": -0.999999,
+   "max": 0.999986
+  },
+  "doy_cos": {
+   "min": -0.999979,
+   "max": 0.999991
+  },
+  "planned_volume_L": {
+   "min": 0.0,
+   "max": 32735.1612
+  },
+  "planned_duration_min": {
+   "min": 0.0,
+   "max": 102.2974
+  }
+ },
+ "zone_ranges": {
+  "Z001": {
+   "planned_volume_L": [
+    0.0,
+    14994.0069
+   ],
+   "planned_volume_L_p95": 6556.983764999995
+  },
+  "Z002": {
+   "planned_volume_L": [
+    0.0,
+    32735.1612
+   ],
+   "planned_volume_L_p95": 14322.967144999997
+  },
+  "Z003": {
+   "planned_volume_L": [
+    0.0,
+    5023.7733
+   ],
+   "planned_volume_L_p95": 2456.4700000000003
+  },
+  "Z004": {
+   "planned_volume_L": [
+    0.0,
+    7196.8192
+   ],
+   "planned_volume_L_p95": 4130.265939999997
+  }
+ },
+ "software": {
+  "scikit-learn": "1.9.1",
+  "pandas": "3.0.3",
+  "numpy": "2.5.1",
+  "seed": 42603
+ },
+ "training_seconds": 88.2,
+ "limitations": [
+  "كل السجلات SIMULATED بالبذرة 42603؛ المقاييس تقيس تعلم المحاكاة، لا دقة ميدانية ولا توفير ماء.",
+  "نفس المناطق الأربع في كل الأجزاء؛ التقسيم الزمني لا يثبت التعميم على مزرعة جديدة.",
+  "خصائص المنطقة ثابتة لكل منطقة، فهي تعمل عمليًا كمعرّف للمنطقة.",
+  "مجموعة مستقلة عن نموذج البرمودا؛ لم تُدمج البيانات ولم يُفترض تطابق المحاصيل.",
+  "معادلة simple_water_balance في الملف غير موثقة؛ أرقامها معروضة كما أوردها الملف. موازنة الماء المحسوبة هنا معادلة مختلفة موثقة في crops_lib.py."
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "rule_version": "rule_v1",
+ "decisions_compared": 731,
+ "action_agreement": 1.0,
+ "volume_agreement": 1.0,
+ "action_matches": 731,
+ "volume_matches": 731,
+ "confusion": [
+  {
+   "stored": "CHECK_SENSOR",
+   "engine": "CHECK_SENSOR",
+   "n": 1
+  },
+  {
+   "stored": "DEFER",
+   "engine": "DEFER",
+   "n": 255
+  },
+  {
+   "stored": "IRRIGATE",
+   "engine": "IRRIGATE",
+   "n": 475
+  }
+ ],
+ "mismatches": [],
+ "meaning": "اتساق المحرك مع قواعد المحاكي الموثقة؛ لا يقيس صحة القرار زراعيًا ولا توفير الماء."
+}

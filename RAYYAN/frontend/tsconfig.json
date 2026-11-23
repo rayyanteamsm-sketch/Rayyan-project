@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "typeRoots": ["./node_modules/@types", "/opt/npm-tools/node_modules/@types"],
+    "types": [],
+    "paths": {
+      "d3-scale": ["./node_modules/@types/d3-scale", "/opt/npm-tools/node_modules/@types/d3-scale"],
+      "d3-shape": ["./node_modules/@types/d3-shape", "/opt/npm-tools/node_modules/@types/d3-shape"],
+      "d3-array": ["./node_modules/@types/d3-array", "/opt/npm-tools/node_modules/@types/d3-array"],
+      "d3-time": ["./node_modules/@types/d3-time", "/opt/npm-tools/node_modules/@types/d3-time"],
+      "d3-path": ["./node_modules/@types/d3-path", "/opt/npm-tools/node_modules/@types/d3-path"]
+    }
+  },
+  "include": ["src", "components", "pages", "services"]
+}

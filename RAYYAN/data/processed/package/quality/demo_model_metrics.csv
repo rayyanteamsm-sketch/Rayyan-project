@@ -1,0 +1,6 @@
+model_id,evaluation_split,n_cases,mae_vwc,rmse_vwc,r2,training_period,label_origin,deployed
+zero_change_baseline,validation,183,0.0255068439,0.0264297836,-12.9094136566,none,simulation_only_NO_field_accuracy_claim,False
+RF_fixed_2024,validation,183,0.0021459204,0.0034284788,0.7659414380,2024,simulation_only_NO_field_accuracy_claim,False
+zero_change_baseline,test,202,0.0281069331,0.0287162415,-22.8173013917,none,simulation_only_NO_field_accuracy_claim,False
+RF_fixed_2024,test,202,0.0018420022,0.0023351230,0.8425085801,2024,simulation_only_NO_field_accuracy_claim,False
+RF_updated_through_Jun2025,test,202,0.0017864923,0.0022261731,0.8568619101,2024+2025JanJun,simulation_only_NO_field_accuracy_claim,False

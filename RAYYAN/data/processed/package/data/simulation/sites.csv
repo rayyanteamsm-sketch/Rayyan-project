@@ -1,0 +1,2 @@
+site_id,site_name,timezone,weather_request_latitude,weather_request_longitude,coordinate_status,valid_from,valid_to
+SITE01,حديقة الملك سلمان، الرياض — موقع مقترح غير ممسوح,Asia/Riyadh,24.7300000000,46.7300000000,assumed_representative_Riyadh_point_NOT_surveyed_plot,2023-12-31T21:00:00Z,2025-12-31T21:00:00Z

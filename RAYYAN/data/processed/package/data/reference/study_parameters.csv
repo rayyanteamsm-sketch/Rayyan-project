@@ -1,0 +1,11 @@
+parameter_id,value_numeric,unit,value_origin,locator,limitation_ar,source_id
+study_fc,0.1000000000,m3/m3,estimated,"Table 7, printed p.109",Rosetta/van Genuchten; study soil only,SRC01
+study_wp,0.0500000000,m3/m3,estimated,"Table 7, printed p.109",study soil only,SRC01
+study_root_depth,0.7500000000,m,adopted_literature,"Methodology, printed p.103",mean of 0.5-1.0 m; not measured trial roots,SRC01
+study_p,0.5000000000,fraction,adopted_literature,"Methodology, printed p.103",conditional reference,SRC01
+study_water_ec,0.8500000000,dS/m,measured,"Soil and water properties, printed p.102",study water sample only,SRC01
+study_ece_tolerance,6.9000000000,dS/m,adopted_literature,"Salinity method, printed p.102",not field salinity,SRC01
+study_lr,0.0300000000,fraction,calculated_rounded,"Table 6, printed p.108",not automatic local leaching requirement,SRC01
+study_taw,37.5000000000,mm,calculated,"Table 7, printed p.109",soil and rooting assumptions of study,SRC01
+study_raw,18.7500000000,mm,calculated,"Table 7, printed p.109",soil and rooting assumptions of study,SRC01
+study_event_depth,19.3300000000,mm/event,calculated_rounded,"Table 8, printed pp.110-111",not a proven optimal local dose,SRC01

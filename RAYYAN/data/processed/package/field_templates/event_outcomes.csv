@@ -1,0 +1,1 @@
+outcome_id,event_id,decision_id,pre_sample_id,prediction_target_at,post_sample_ids,pre_vwc,post_vwc,delta_vwc,post_valid_count,label_available_at,label_status,confounding_flags,protocol_version

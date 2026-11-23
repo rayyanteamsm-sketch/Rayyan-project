@@ -1,0 +1,27 @@
+{
+  // مهام ريّان: Terminal ← Run Task… (أو Ctrl+Shift+P ← Tasks: Run Task)
+  "version": "2.0.0",
+  "options": { "env": { "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8" } },
+  "tasks": [
+    { "label": "ريّان: تشغيل التطبيق كاملًا (run.bat)", "type": "shell", "command": "${workspaceFolder}\\run.bat",
+      "group": { "kind": "build", "isDefault": true }, "problemMatcher": [], "presentation": { "panel": "dedicated" } },
+    { "label": "Backend: FastAPI مع إعادة التحميل (المنفذ 8000)", "type": "shell", "command": "py",
+      "args": ["-3", "-m", "uvicorn", "backend.main:app", "--reload", "--port", "8000"], "isBackground": true, "problemMatcher": [] },
+    { "label": "Frontend: بناء الواجهة", "type": "shell", "command": "node", "args": ["frontend/build.mjs"], "problemMatcher": [] },
+    { "label": "Frontend: بناء مستمر عند التعديل (watch)", "type": "shell", "command": "node", "args": ["frontend/build.mjs", "--watch"],
+      "isBackground": true, "problemMatcher": [] },
+    { "label": "Frontend: فحص الأنواع (TypeScript)", "type": "shell", "command": "npx", "args": ["tsc", "-p", "tsconfig.json"],
+      "options": { "cwd": "${workspaceFolder}/frontend" }, "problemMatcher": ["$tsc"] },
+    { "label": "Frontend: تثبيت الحزم (npm install)", "type": "shell", "command": "npm", "args": ["install"],
+      "options": { "cwd": "${workspaceFolder}/frontend" }, "problemMatcher": [] },
+    { "label": "ML: تدريب نموذج المحاصيل الأربع", "type": "shell", "command": "py", "args": ["-3", "ml/training/train_crops_model.py"], "problemMatcher": [] },
+    { "label": "ML: تدريب نموذج البرمودا", "type": "shell", "command": "py", "args": ["-3", "ml/training/train_response_model.py"], "problemMatcher": [] },
+    { "label": "ML: إعادة كل شيء من الملفات الأصلية (--rebuild)", "type": "shell", "command": "${workspaceFolder}\\run.bat",
+      "args": ["--rebuild", "--setup-only"], "problemMatcher": [] },
+    { "label": "الصور: معالجة الصور الميدانية (image_processing)", "type": "shell", "command": "py", "args": ["-3", "image_processing/main.py"], "problemMatcher": [] },
+    { "label": "اختبارات: كل الاختبارات السريعة", "type": "shell", "command": "py",
+      "args": ["-3", "-m", "pytest", "tests", "-m", "not slow", "-q"], "group": "test", "problemMatcher": [] },
+    { "label": "اختبارات: معالجة الصور", "type": "shell", "command": "py", "args": ["-3", "-m", "pytest", "test_program.py", "-q"],
+      "options": { "cwd": "${workspaceFolder}/image_processing" }, "group": "test", "problemMatcher": [] }
+  ]
+}
