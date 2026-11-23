@@ -1,0 +1,27 @@
+assumption_id,parameter_id,assumed_value,description_ar,source_id
+A01,zone_area_m2,5.0,5 م² لكل منطقة: افتراض تصميم البروتوتايب من التقرير، بلا مسح ميداني,SIM01
+A02,root_depth_m,0.25,عمق فعال سطحي افتراضي 0.25م؛ ليس عمق0.75م بالدراسة ولا قياس جذور حقيقي,SIM01
+A03,field_capacity_vwc,0.15,0.15 من المثال العام FAO56 Example36؛ استخدام محاكاة فقط,SRC03;SIM01
+A04,wilting_point_vwc,0.06,0.06 من المثال العام FAO56 Example36؛ استخدام محاكاة فقط,SRC03;SIM01
+A05,saturation_vwc,0.4,مسامية افتراضية هندسية، لا مختبر,SIM01
+A06,initial_vwc,0.14,حالة بداية افتراضية متساوية للمجموعتين,SIM01
+A07,depletion_fraction,0.5,افتراض0.5؛ موافق لقيمة turf warm season في FAO56 Table22 عند شروطه؛ لا يثبت حد الموقع,SRC03;SIM01
+A08,application_efficiency,0.8,كفاءة افتراضية0.8 مشتركة؛ لا اختبار Catch Can فعلي,SIM01
+A09,nominal_flow_l_min,2.0,تدفق تصميم افتراضي، والتدفق الفعلي المحاكى يختلف قليلًا,SIM01
+A10,max_event_l,80.0,سقف افتراضي لجرعة الخطة؛ السيناريو stuck_open قد يتجاوزه في التنفيذ,SIM01
+A11,normal_daily_budget_l,160.0,تخصيص افتراضي مستقل عن الخزان؛ لا رصيد مياه مقاس,SIM01
+A12,limited_daily_budget_l,40.0,ميزانية40لتر في1-7يونيو2025 لاختبار القيد، وليست نقصًا مسجلًا,SIM01
+A13,infiltration_limit_mm_h,15.0,قدرة تسرب افتراضية مشتركة، وليست قياسًا لتربة الموقع,SIM01
+A14,drainage_half_life_h,2.0,تصريف فوقFC بنصف عمر ساعتين افتراضي؛ ليس حل Richards,SIM01
+A15,response_lag_min,120,نافذة120دقيقة افتراضية؛ تحتاج اختبار استجابة محلي قبل اعتماد Target,SIM01
+A16,solver_step_minutes,1,دقيقة للتكامل ومطابقة سجل التدفق؛ لا دليل زمن استجابة أجهزة حقيقية,SIM01
+A17,sensor_noise_sd_vwc,0.0015,ضجيج Gaussian افتراضي، ليس مواصفة مصنع,SIM01
+A18,sensor_missing_probability,0.005,معدل حقن اختبار عشوائي؛ لا تقدير موثوقية أجهزة,SIM01
+A19,sensor_spike_probability,0.001,معدل حقن تجاوز مدى؛ لا تواتر واقعي,SIM01
+A20,duplicate_probability,0.002,تكرار نقل مصمم لاختبار إزالة التكرار؛ الخام محفوظ,SIM01
+A21,simulated_water_tariff_sar_m3,2.0,سعر خيالي معلن2ر.س/م³ للعرض فقط؛ ليس تعرفة سعودية موثقة,SIM01
+A22,kc_temperature_rule,"study_kc*(0.35+0.65*clip((daily_mean_temp-8)/20,0,1))",صيغة حرارة موسمية هندسية غير معايرة لسبات البرمودا؛ لا تنبؤ نمو,SRC01;SIM01
+A23,comparison_schedule,hotMaySep:60L_every2days;other:40L_every3days,خط أساس مصمم؛ ليس سجل العميل التاريخي، ولا تجربة عشوائية مكررة,SIM01
+A24,forecast_error,ET0_lognormal_sd0.15;rain_lognormal_sd0.35;miss15%;false3%;temp_sd1.5C,توقعات مولدة من forcing مع خطأ مصطنع؛ لا أرشيف توقعات ولا مهارة مثبتة,SIM01
+A25,virtual_reservoir,500L;daily_refill;15L_unmetered_2025-07-20,اختبار حدود موازنة الموقع منفصل عن موازنة التربة والميزانية,SIM01
+A26,spatial_model,one_root_bucket_and_virtual_soil_sensor_per_zone,لا يختبر عدم تجانس التربة ولا يمثل خطة الحساسات الخمسة المذكورة بالتقرير,SIM01

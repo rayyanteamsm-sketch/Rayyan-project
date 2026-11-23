@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* لوحة ألوان ريّان: ماء، عشب برمودا، تربة، ومحايدات باردة */
+@theme {
+  --color-mist: #EEF2EE;
+  --color-paper: #FBFCFA;
+  --color-ink: #13302A;
+  --color-muted: #55685F;
+  --color-line: #D3DDD6;
+  --color-leaf: #2F6B4F;
+  --color-leaf-dark: #1E4A36;
+  --color-turf: #7FA66A;
+  --color-water: #1F7AA8;
+  --color-water-light: #8CC9E6;
+  --color-water-pale: #E3F1F8;
+  --color-soil: #8A6A45;
+  --color-soil-light: #C4A87F;
+  --color-ochre: #B97A22;
+  --color-ochre-pale: #F7EEDD;
+  --color-danger: #B0432A;
+  --color-danger-pale: #F6E3DD;
+  --font-display: "Readex Pro", "IBM Plex Sans Arabic", "DejaVu Sans", Tahoma, sans-serif;
+  --font-body: "IBM Plex Sans Arabic", "DejaVu Sans", Tahoma, "Segoe UI", sans-serif;
+  --radius-panel: 14px;
+}
+
+@layer base {
+  html { background: var(--color-mist); color: var(--color-ink); font-family: var(--font-body); }
+  body { background:
+    radial-gradient(1100px 520px at 100% -10%, #DCEFF7 0%, transparent 60%),
+    radial-gradient(900px 480px at 0% 110%, #E3EFE2 0%, transparent 55%), var(--color-mist); min-height: 100vh; }
+  body { margin: 0; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.3; margin: 0; }
+  :focus-visible { outline: 3px solid var(--color-water); outline-offset: 2px; border-radius: 4px; }
+  input, select, button { font: inherit; color: inherit; }
+  .num { direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  .panel { background: color-mix(in srgb, var(--color-paper) 92%, transparent); border: 1px solid var(--color-line); border-radius: var(--radius-panel);
+    box-shadow: 0 1px 2px #13302A0A, 0 8px 24px -16px #13302A2E; }
+  .lift { transition: transform .18s ease, box-shadow .18s ease; }
+  .lift:hover { transform: translateY(-2px); box-shadow: 0 2px 4px #13302A12, 0 16px 32px -18px #13302A55; }
+  .sidebar { background: linear-gradient(170deg, #0E3B2C 0%, #154A39 45%, #123F4F 100%); }
+  .nav-item { transition: background .15s, color .15s; }
+  .nav-active { background: #E6EFE9; color: var(--color-leaf-dark); box-shadow: inset -3px 0 0 #3FA2D3; }
+  .hero-strip { background: linear-gradient(115deg, #0E3B2C 0%, #1E5A44 40%, #1F7AA8 100%); }
+  .page-head h1 { background: linear-gradient(90deg, #13302A, #1F5F7F); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .num-mixed { unicode-bidi: plaintext; }
+  .fade-in { animation: fadeIn .35s ease both; }
+  .pulse-dot { animation: pulse 2s ease-in-out infinite; }
+  .field { display: block; width: 100%; border: 1px solid var(--color-line); border-radius: 8px; padding: .45rem .6rem; background: #fff; }
+  .field:focus { border-color: var(--color-water); outline: none; box-shadow: 0 0 0 3px #1F7AA833; }
+  .field-num { direction: ltr; text-align: right; }
+  .btn { display: inline-flex; align-items: center; gap: .4rem; border-radius: 8px; padding: .5rem 1rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: background .15s; }
+  .btn-primary { background: var(--color-water); color: #fff; }
+  .btn-primary:hover { background: #17648b; }
+  .btn-primary:disabled { opacity: .55; cursor: progress; }
+  .btn-ghost { background: #fff; border-color: var(--color-line); }
+  .btn-ghost:hover { border-color: var(--color-leaf); }
+  .chip { display: inline-flex; align-items: center; gap: .3rem; border-radius: 999px; padding: .1rem .6rem; font-size: .78rem; font-weight: 600; white-space: nowrap; }
+  .tbl { width: 100%; border-collapse: collapse; font-size: .875rem; }
+  .tbl th { text-align: right; font-weight: 600; color: var(--color-leaf-dark); background: #EDF3EF; padding: .5rem .6rem; border-bottom: 1px solid var(--color-line); white-space: nowrap; }
+  .tbl td { padding: .45rem .6rem; border-bottom: 1px solid #E4EBE6; vertical-align: top; }
+  .tbl tr:hover td { background: #F4F8F5; }
+}
+
+/* حركة الماء في عمود التربة: تتبع القيم القادمة من الخادم */
+.water-rise { transition: y 1.1s cubic-bezier(.3,.7,.2,1), height 1.1s cubic-bezier(.3,.7,.2,1); }
+@keyframes shimmer { 0% { transform: translateX(0); } 100% { transform: translateX(-40px); } }
+.water-surface { animation: shimmer 3.2s linear infinite; }
+/* ارتفاع الماء عند الظهور: الحالة النهائية هي المرسومة، فلا يختفي الماء إن لم تعمل الحركة */
+.water-grow { animation: grow 1.1s cubic-bezier(.3,.7,.2,1) both; }
+@keyframes grow { from { transform: scaleY(0.04); } to { transform: none; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 #2F6B4F66; } 50% { box-shadow: 0 0 0 5px #2F6B4F00; } }
+@media (prefers-reduced-motion: reduce) {
+  .water-rise { transition: none; }
+  .water-surface { animation: none; }
+  .fade-in, .pulse-dot, .water-grow { animation: none; }
+  .lift, .lift:hover { transition: none; transform: none; }
+}

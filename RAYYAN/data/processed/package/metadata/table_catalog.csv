@@ -1,0 +1,37 @@
+table,file,grain_ar,data_type,primary_key,foreign_keys,cadence_ar,source_id,use_ar,row_count,column_count
+weather_reanalysis,data/reference/weather_reanalysis.csv,خلية إعادة تحليل واحدة × ساعة؛ درجة الحرارة والرطوبة والرياح لحظية عند نهاية الفترة، والتراكمات للساعة السابقة,reference,weather_id,site_id->sites.site_id,ساعة، 731 يومًا؛ 0.25 درجة شبكية,SRC02,استكشاف الطقس وتغذية المحاكاة؛ لا تدخل تاريخيًا كأنها توقع متاح آنذاك,17544,15
+study_climate,data/reference/study_climate.csv,متوسط مناخي منشور لشهر من السنة، وليس سجلًا يوميًا,observed_aggregate,month,,,SRC01,,12,8
+study_crop,data/reference/study_crop.csv,حساب مرجعي منشور لشهر وفق افتراضات الدراسة,reference,month,,,SRC01,,12,8
+study_parameters,data/reference/study_parameters.csv,معامل واحد مع أصله وشروط نقله,reference,parameter_id,,,SRC01,,10,7
+sites,data/simulation/sites.csv,تعريف موقع افتراضي واحد، بلا ادعاء ترخيص أو تركيب,simulation,site_id,,,SIM01,,1,8
+zones,data/simulation/zones.csv,منطقة ري افتراضية؛ المساحة افتراض تصميم وليست قياسًا,simulation,zone_id,site_id->sites.site_id,,SIM01,,2,9
+zone_profiles,data/simulation/zone_profiles.csv,نسخة افتراضية من التربة والجذور والحدود لمنطقة,simulation,profile_id,zone_id->zones.zone_id,,SIM01,,2,14
+devices,data/simulation/devices.csv,جهاز افتراضي؛ حساس تربة واحد يمثل متوسط الجذور في النموذج فقط,simulation,device_id,zone_id->zones.zone_id,,SIM01,,6,7
+calibrations,data/simulation/calibrations.csv,تحويل خطي افتراضي؛ RMSE صفري لنقاط مولدة وليس دقة جهاز حقيقي,simulation,calibration_id,device_id->devices.device_id,,SIM01,,2,9
+calibration_points,data/simulation/calibration_points.csv,زوج معايرة مولد وليس عينة مختبر,simulation,point_id,calibration_id->calibrations.calibration_id,,SIM01,,10,5
+measurements_raw,data/simulation/measurements_raw.csv,رسالة نقل افتراضية؛ قد تتكرر عينة sample_id برسالة أخرى,simulation,message_id,device_id->devices.device_id,ساعة + 3 عينات قرب وقت نتيجة كل رية,SIM01,,37486,7
+measurements_clean,data/simulation/measurements_clean.csv,عينة بعد التحويل الخطي وفحص المدى؛ لا تعويض ولا قص للقيمة الأصلية,simulation,sample_id,message_id->measurements_raw.message_id;device_id->devices.device_id;calibration_id->calibrations.calibration_id,ساعة + نافذة الاستجابة,SIM01,,37398,10
+injection_audit,data/audit/injection_audit.csv,خلل بيانات مصمم للاختبار؛ خارج Features,simulation,injection_id,message_id->measurements_raw.message_id,,SIM01,,329,4
+weather_forecasts,data/simulation/weather_forecasts.csv,إصدار توقع اصطناعي لفترة 24 ساعة؛ ليس أرشيف توقعات فعلي,simulation,forecast_id,site_id->sites.site_id,يومي 03:00 محلي,SIM01,,731,11
+water_budgets,data/simulation/water_budgets.csv,تخصيص إداري افتراضي للموقع ليوم؛ ليس رصيد خزان مقاسًا,simulation,budget_id,site_id->sites.site_id,يومي,SIM01,,731,7
+decisions,data/simulation/decisions.csv,قرار لمنطقة قبل التنفيذ في 04:00 محليًا,simulation,decision_id,zone_id->zones.zone_id;profile_id->zone_profiles.profile_id;budget_id->water_budgets.budget_id;forecast_id->weather_forecasts.forecast_id;input_sample_id->measurements_clean.sample_id,قرار يومي لكل منطقة,SIM01,,1462,17
+plan_candidates,data/simulation/plan_candidates.csv,خيار جرعة صفر/نصف/كامل من الخطة؛ التوقع تقريب خطي معلن,simulation,candidate_id,decision_id->decisions.decision_id,,SIM01,,4386,5
+control_events,data/simulation/control_events.csv,أمر متحكم وإقراره؛ لا يثبت وضع الصمام الفيزيائي,simulation,command_id,decision_id->decisions.decision_id;device_id->devices.device_id,,SIM01,,1541,9
+flow_measurements,data/simulation/flow_measurements.csv,قراءة عداد افتراضية؛ flow_l_min متوسط الدقيقة السابقة؛ صف البداية بلا معدل,simulation,flow_sample_id,event_id->irrigation_events.event_id;device_id->devices.device_id,دقيقة أثناء تشغيل الري مع قراءة البداية,SIM01,,23843,8
+irrigation_events,data/simulation/irrigation_events.csv,تنفيذ رية مخططة، بما فيه محاولة لم يصل فيها ماء؛ اللترات منفذة وليست مثلى,simulation,event_id,decision_id->decisions.decision_id;zone_id->zones.zone_id;device_id->devices.device_id;scenario_id->test_scenarios.scenario_id,,SIM01,,770,15
+event_outcomes,data/simulation/event_outcomes.csv,فرق رطوبة من عينة متاحة قبل القرار إلى متوسط 3 عينات حول النهاية المخططة +120 دقيقة؛ وسم محاكاة,simulation,outcome_id,event_id->irrigation_events.event_id;decision_id->decisions.decision_id;pre_sample_id->measurements_clean.sample_id,,SIM01,,770,14
+root_balance_daily,data/simulation/root_balance_daily.csv,موازنة يومية محسوبة من تكامل دقيقة واحدة؛ حالات المحاكي وليست قراءات تربة,simulation,balance_id,zone_id->zones.zone_id,يومي لكل منطقة,SIM01,,1462,15
+site_balance_daily,data/simulation/site_balance_daily.csv,موازنة حدود خزان افتراضي كاملة؛ المتبقي غير المحسوب ليس تشخيص تسرب,simulation,site_balance_id,site_id->sites.site_id,يومي,SIM01,,731,11
+plant_assessments,data/simulation/plant_assessments.csv,مؤشر تغطية محاكى مشتق من الإجهاد والحرارة؛ لا فحص نبات ميداني,simulation,assessment_id,zone_id->zones.zone_id,أسبوعي,SIM01,,208,8
+test_scenarios,data/audit/test_scenarios.csv,حالة تشغيل نادرة مصممة، لا معدل حدوث في الواقع,simulation,scenario_id,zone_id->zones.zone_id,,SIM01,,6,7
+incident_reviews,data/simulation/incident_reviews.csv,تنبيه وفحص افتراضي؛ السبب الحقيقي من محرك المحاكاة فقط,simulation,incident_id,zone_id->zones.zone_id;event_id->irrigation_events.event_id;scenario_id->test_scenarios.scenario_id,,SIM01,,6,9
+rule_alerts,data/simulation/rule_alerts.csv,تنبيه مشتق من بيانات التدفق/الموازنة/قرار فحص بقواعد مستقلة عن سبب السيناريو,derived_from_simulation,alert_id,zone_id->zones.zone_id;event_id->irrigation_events.event_id,,SIM01,,7,8
+cost_summary,data/simulation/cost_summary.csv,تكلفة ماء افتراضية لسنة ومنطقة؛ الطاقة غير متاحة ولا تستنتج من اللترات وحدها,derived_from_simulation,cost_id,zone_id->zones.zone_id,,SIM01,,4,8
+ml_features,data/ml/ml_features.csv,مدخلات مجمدة متاحة عند القرار؛ zone_id وIDs metadata لا تدخل قائمة Features العددية,derived_from_simulation,decision_id,decision_id->decisions.decision_id;zone_id->zones.zone_id;input_sample_id->measurements_clean.sample_id;forecast_id->weather_forecasts.forecast_id,,SIM01,,770,15
+ml_targets,data/ml/ml_targets.csv,وسم منفصل عن Features؛ لا يمثل جرعة مثلى أو حقيقة نباتية مستقلة,derived_from_simulation,decision_id,decision_id->decisions.decision_id,,SIM01,,770,6
+split_manifest,data/ml/split_manifest.csv,كل عملية ري كاملة في مجموعة زمنية واحدة؛ 2024 تدريب، النصف الأول2025 تحقق، الثاني اختبار,derived_from_simulation,decision_id,decision_id->decisions.decision_id;event_id->irrigation_events.event_id;zone_id->zones.zone_id,,SIM01,,770,6
+feature_availability,data/ml/feature_availability.csv,تدقيق لكل مصدر Features للتأكد من وصوله قبل القرار,derived_from_simulation,"decision_id,input_role",decision_id->decisions.decision_id,,SIM01,,2310,5
+sources,data/documentation/sources.csv,مصدر أو منهج واحد مع حدود استخدامه,documentation,source_id,,,PROJECT01;SRC01;SRC02;SRC03;SRC04;SRC05;SIM01,,7,11
+assumptions,data/documentation/assumptions.csv,افتراض واحد قابل للتعديل؛ فصل المصدر عن الأرقام المولدة,documentation,assumption_id,,,SIM01,,26,5
+field_collection_plan,data/documentation/field_collection_plan.csv,مجموعة بيانات ناقصة تحتاج جمعًا حقيقيًا وطريقة جمعها,missing_field_data,priority,,,SIM01,,11,7
+function_readiness,data/documentation/function_readiness.csv,وظيفة مثبتة بالتقرير وحالة دعمها,documentation,function_ar,,,SIM01,,8,5

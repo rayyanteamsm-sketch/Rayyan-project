@@ -1,0 +1,1 @@
+forecast_id,site_id,issued_at,available_at,valid_from,valid_to,temperature_c,rain_mm,et0_mm,product_type,source_id

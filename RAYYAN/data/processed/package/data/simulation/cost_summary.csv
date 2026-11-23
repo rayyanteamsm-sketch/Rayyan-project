@@ -1,0 +1,5 @@
+cost_id,zone_id,year,delivered_volume_l,water_tariff_sar_m3,water_cost_sar,energy_kwh,cost_basis
+COSTZ012024,Z01,2024,7396.3907685142,2.0000000000,14.7927815370,,fictional_scenario_rate_NOT_verified_tariff
+COSTZ012025,Z01,2025,7273.7514786323,2.0000000000,14.5475029573,,fictional_scenario_rate_NOT_verified_tariff
+COSTZ022024,Z02,2024,15903.7753112390,2.0000000000,31.8075506225,,fictional_scenario_rate_NOT_verified_tariff
+COSTZ022025,Z02,2025,15420.3014538985,2.0000000000,30.8406029078,,fictional_scenario_rate_NOT_verified_tariff

@@ -1,0 +1,33 @@
+{
+  // تشغيل الخادم مع المصحح: Run and Debug ← «ريّان: FastAPI (تصحيح)»
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ريّان: FastAPI (تصحيح)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["backend.main:app", "--port", "8000"],
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONUTF8": "1" },
+      "justMyCode": true
+    },
+    {
+      "name": "ريّان: تدريب نموذج المحاصيل",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/ml/training/train_crops_model.py",
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONUTF8": "1" }
+    },
+    {
+      "name": "ريّان: الاختبارات",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["tests", "-m", "not slow", "-q"],
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONUTF8": "1" }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+scenario_id,zone_id,scenario_type,valid_from,valid_to,frequency_basis,injection_rule
+SC0001,Z02,no_flow,2024-04-15T03:00:00Z,2024-04-15T03:49:00Z,deterministic_event_index_injection_NOT_empirical_prevalence,event index 40 in Z02
+SC0002,Z01,low_flow,2024-06-07T02:00:00Z,2024-06-07T02:40:00Z,deterministic_event_index_injection_NOT_empirical_prevalence,event index 60 in Z01
+SC0003,Z02,low_flow,2024-08-01T03:00:00Z,2024-08-01T03:48:00Z,deterministic_event_index_injection_NOT_empirical_prevalence,event index 140 in Z02
+SC0004,Z02,stuck_open,2025-01-11T03:00:00Z,2025-01-11T03:44:00Z,deterministic_event_index_injection_NOT_empirical_prevalence,event index 240 in Z02
+SC0005,Z01,no_flow,2025-04-07T02:00:00Z,2025-04-07T02:30:00Z,deterministic_event_index_injection_NOT_empirical_prevalence,event index 180 in Z01
+SC0006,,unmetered_site_withdrawal,2025-07-19T21:00:00Z,2025-07-20T21:00:00Z,one_designed_case_NOT_empirical_prevalence,15 L omitted from known outlet meter

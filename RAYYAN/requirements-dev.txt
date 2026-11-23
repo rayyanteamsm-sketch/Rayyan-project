@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest==9.1.1
+# اختبارات المتصفح (اختيارية؛ تُتخطى تلقائيًا إن غابت). بعد التثبيت: python -m playwright install chromium
+playwright==1.63.0

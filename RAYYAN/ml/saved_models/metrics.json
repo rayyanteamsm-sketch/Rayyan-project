@@ -1,0 +1,647 @@
+{
+ "model_version": "rf-delta-vwc-20261117-95bda9ce",
+ "trained_at": "2026-11-17T14:24:48+00:00",
+ "task": "regression",
+ "target": "delta_vwc",
+ "target_unit": "m3/m3",
+ "algorithm": "RandomForestRegressor",
+ "features": [
+  "pre_vwc",
+  "planned_volume_l",
+  "planned_duration_min",
+  "root_depth_m",
+  "area_m2",
+  "forecast_rain_mm",
+  "forecast_et0_mm",
+  "doy_sin",
+  "doy_cos"
+ ],
+ "forbidden_inputs": [
+  "delivered_volume_l",
+  "actual_end",
+  "post_vwc",
+  "delta_vwc",
+  "scenario_id",
+  "confirmed_cause",
+  "realized_weather",
+  "decision_id",
+  "zone_id",
+  "issued_at",
+  "input_sample_id",
+  "forecast_id",
+  "features_available_at"
+ ],
+ "data": {
+  "source": "data/database/rayyan.sqlite: ml_features + ml_targets + split_manifest",
+  "data_hash_sha256": "95bda9ce2bca341514e2285a95778748573d3630926d0f618d1a2cd9821a852e",
+  "checks": {
+   "rows_total": 770,
+   "ineligible_or_missing_target": 1,
+   "features_exclude_forbidden": true,
+   "features_available_before_decision": true,
+   "train_labels_before_validation_start": true,
+   "validation_labels_before_test_start": true,
+   "no_missing_features_in_eligible": true,
+   "split_periods": {
+    "test": [
+     "2025-07-01",
+     "2025-12-31"
+    ],
+    "train": [
+     "2024-01-01",
+     "2024-12-30"
+    ],
+    "validation": [
+     "2025-01-01",
+     "2025-06-30"
+    ]
+   }
+  },
+  "counts": {
+   "train": 384,
+   "validation": 183,
+   "test": 202,
+   "excluded": 1,
+   "deployed_fit": 567
+  },
+  "label_origin": "simulation_only — ليست قياسات ميدانية"
+ },
+ "selection": {
+  "method": "grid on validation RMSE only; test untouched",
+  "grid": {
+   "n_estimators": [
+    200,
+    400
+   ],
+   "max_depth": [
+    null,
+    6,
+    10
+   ],
+   "min_samples_leaf": [
+    1,
+    3,
+    5
+   ],
+   "max_features": [
+    1.0,
+    0.6,
+    "sqrt"
+   ]
+  },
+  "n_candidates": 55,
+  "best_params": {
+   "n_estimators": 400,
+   "max_depth": 6,
+   "min_samples_leaf": 3,
+   "max_features": 1.0
+  },
+  "best_validation": {
+   "params": {
+    "n_estimators": 400,
+    "max_depth": 6,
+    "min_samples_leaf": 3,
+    "max_features": 1.0
+   },
+   "n": 183,
+   "mae": 0.0021244911348937464,
+   "rmse": 0.003397540431161212,
+   "r2": 0.7701466304163457
+  },
+  "top10": [
+   {
+    "params": {
+     "n_estimators": 400,
+     "max_depth": 6,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "n": 183,
+    "mae": 0.0021244911348937464,
+    "rmse": 0.003397540431161212,
+    "r2": 0.7701466304163457
+   },
+   {
+    "params": {
+     "n_estimators": 400,
+     "max_depth": null,
+     "min_samples_leaf": 3,
+     "max_features": 0.6
+    },
+    "n": 183,
+    "mae": 0.0021206629762901665,
+    "rmse": 0.0033997049874546006,
+    "r2": 0.7698536602192821
+   },
+   {
+    "params": {
+     "n_estimators": 400,
+     "max_depth": 10,
+     "min_samples_leaf": 1,
+     "max_features": 0.6
+    },
+    "n": 183,
+    "mae": 0.0021031217810740838,
+    "rmse": 0.003403304664231822,
+    "r2": 0.769366034952459
+   },
+   {
+    "params": {
+     "n_estimators": 400,
+     "max_depth": 10,
+     "min_samples_leaf": 3,
+     "max_features": 0.6
+    },
+    "n": 183,
+    "mae": 0.0021223146650213476,
+    "rmse": 0.003403426259246636,
+    "r2": 0.7693495542408286
+   },
+   {
+    "params": {
+     "n_estimators": 400,
+     "max_depth": 10,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "n": 183,
+    "mae": 0.002114822222939597,
+    "rmse": 0.0034072373858549105,
+    "r2": 0.76883270436452
+   },
+   {
+    "params": {
+     "n_estimators": 400,
+     "max_depth": null,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "n": 183,
+    "mae": 0.0021138861460212525,
+    "rmse": 0.003407618055549104,
+    "r2": 0.7687810476763998
+   },
+   {
+    "params": {
+     "n_estimators": 400,
+     "max_depth": null,
+     "min_samples_leaf": 1,
+     "max_features": 0.6
+    },
+    "n": 183,
+    "mae": 0.0021066725125519136,
+    "rmse": 0.0034093698262419115,
+    "r2": 0.7685432588815303
+   },
+   {
+    "params": {
+     "n_estimators": 200,
+     "max_depth": 6,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "n": 183,
+    "mae": 0.002132192120014342,
+    "rmse": 0.003409719013986069,
+    "r2": 0.7684958448429784
+   },
+   {
+    "params": {
+     "n_estimators": 200,
+     "max_depth": 10,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "n": 183,
+    "mae": 0.0021146082257522516,
+    "rmse": 0.003413640795293339,
+    "r2": 0.7679629969499522
+   },
+   {
+    "params": {
+     "n_estimators": 200,
+     "max_depth": null,
+     "min_samples_leaf": 3,
+     "max_features": 1.0
+    },
+    "n": 183,
+    "mae": 0.0021139711332280736,
+    "rmse": 0.003414701932801979,
+    "r2": 0.7678187161356579
+   }
+  ]
+ },
+ "results": [
+  {
+   "model_id": "baseline_zero_change",
+   "label_ar": "خط أساس: لا تغير",
+   "split": "validation",
+   "trained_on": "none",
+   "n": 183,
+   "mae": 0.02550684389781421,
+   "rmse": 0.026429783625793603,
+   "r2": -12.909413656573392
+  },
+  {
+   "model_id": "baseline_train_mean",
+   "label_ar": "خط أساس: متوسط التدريب",
+   "split": "validation",
+   "trained_on": "train",
+   "n": 183,
+   "mae": 0.005621323173706455,
+   "rmse": 0.007469018792886604,
+   "r2": -0.11083284365957802
+  },
+  {
+   "model_id": "baseline_linear_rule",
+   "label_ar": "معادلة المشروع الخطية (decisions.predicted_delta_vwc)",
+   "split": "validation",
+   "trained_on": "formula",
+   "n": 183,
+   "mae": 0.0066032171131147534,
+   "rmse": 0.007272829270719416,
+   "r2": -0.05324254273334028
+  },
+  {
+   "model_id": "rf_package_fixed",
+   "label_ar": "Random Forest بإعدادات الحزمة الثابتة",
+   "split": "validation",
+   "trained_on": "train",
+   "n": 183,
+   "mae": 0.0021459602015122653,
+   "rmse": 0.003428498262943618,
+   "r2": 0.7659387742194457
+  },
+  {
+   "model_id": "rf_selected_frozen",
+   "label_ar": "Random Forest المختار — مدرب على 2024",
+   "split": "validation",
+   "trained_on": "train",
+   "n": 183,
+   "mae": 0.002124491134893747,
+   "rmse": 0.003397540431161212,
+   "r2": 0.7701466304163457
+  },
+  {
+   "model_id": "baseline_zero_change",
+   "label_ar": "خط أساس: لا تغير",
+   "split": "test",
+   "trained_on": "none",
+   "n": 202,
+   "mae": 0.028106933085643566,
+   "rmse": 0.02871624146073703,
+   "r2": -22.817301391678868
+  },
+  {
+   "model_id": "baseline_train_mean",
+   "label_ar": "خط أساس: متوسط التدريب",
+   "split": "test",
+   "trained_on": "train+validation",
+   "n": 202,
+   "mae": 0.004811506092904289,
+   "rmse": 0.005976565685451804,
+   "r2": -0.03166988507948654
+  },
+  {
+   "model_id": "baseline_linear_rule",
+   "label_ar": "معادلة المشروع الخطية (decisions.predicted_delta_vwc)",
+   "split": "test",
+   "trained_on": "formula",
+   "n": 202,
+   "mae": 0.0066492487410891084,
+   "rmse": 0.00724097698401778,
+   "r2": -0.5143689400588471
+  },
+  {
+   "model_id": "rf_package_fixed",
+   "label_ar": "Random Forest بإعدادات الحزمة الثابتة",
+   "split": "test",
+   "trained_on": "train",
+   "n": 202,
+   "mae": 0.0018421306866737747,
+   "rmse": 0.0023351825986488847,
+   "r2": 0.8425005465950939
+  },
+  {
+   "model_id": "rf_selected_frozen",
+   "label_ar": "Random Forest المختار — مدرب على 2024",
+   "split": "test",
+   "trained_on": "train",
+   "n": 202,
+   "mae": 0.0018444506172808257,
+   "rmse": 0.0023845073536760456,
+   "r2": 0.8357767314318706
+  },
+  {
+   "model_id": "rf_selected_deployed",
+   "label_ar": "Random Forest المختار — مدرب حتى يونيو 2025 (المستخدم في النظام)",
+   "split": "test",
+   "trained_on": "train+validation",
+   "n": 202,
+   "mae": 0.0018747575800353918,
+   "rmse": 0.0024439307786111564,
+   "r2": 0.8274896480265561
+  }
+ ],
+ "package_reproduction": {
+  "ours": {
+   "validation": {
+    "n": 183,
+    "mae": 0.0021459602015122653,
+    "rmse": 0.003428498262943618,
+    "r2": 0.7659387742194457
+   },
+   "test": {
+    "n": 202,
+    "mae": 0.0018421306866737747,
+    "rmse": 0.0023351825986488847,
+    "r2": 0.8425005465950939
+   }
+  },
+  "package_reported": [
+   {
+    "model_id": "zero_change_baseline",
+    "evaluation_split": "validation",
+    "n_cases": 183,
+    "mae_vwc": 0.0255068439,
+    "rmse_vwc": 0.0264297836,
+    "r2": -12.9094136566,
+    "training_period": "none",
+    "label_origin": "simulation_only_NO_field_accuracy_claim",
+    "deployed": false
+   },
+   {
+    "model_id": "RF_fixed_2024",
+    "evaluation_split": "validation",
+    "n_cases": 183,
+    "mae_vwc": 0.0021459204,
+    "rmse_vwc": 0.0034284788,
+    "r2": 0.765941438,
+    "training_period": "2024",
+    "label_origin": "simulation_only_NO_field_accuracy_claim",
+    "deployed": false
+   },
+   {
+    "model_id": "zero_change_baseline",
+    "evaluation_split": "test",
+    "n_cases": 202,
+    "mae_vwc": 0.0281069331,
+    "rmse_vwc": 0.0287162415,
+    "r2": -22.8173013917,
+    "training_period": "none",
+    "label_origin": "simulation_only_NO_field_accuracy_claim",
+    "deployed": false
+   },
+   {
+    "model_id": "RF_fixed_2024",
+    "evaluation_split": "test",
+    "n_cases": 202,
+    "mae_vwc": 0.0018420022,
+    "rmse_vwc": 0.002335123,
+    "r2": 0.8425085801,
+    "training_period": "2024",
+    "label_origin": "simulation_only_NO_field_accuracy_claim",
+    "deployed": false
+   },
+   {
+    "model_id": "RF_updated_through_Jun2025",
+    "evaluation_split": "test",
+    "n_cases": 202,
+    "mae_vwc": 0.0017864923,
+    "rmse_vwc": 0.0022261731,
+    "r2": 0.8568619101,
+    "training_period": "2024+2025JanJun",
+    "label_origin": "simulation_only_NO_field_accuracy_claim",
+    "deployed": false
+   }
+  ]
+ },
+ "error_analysis_test": {
+  "by_zone": {
+   "Z01": {
+    "n": 77,
+    "mae": 0.0015971933142135116,
+    "rmse": 0.001975570818540275,
+    "r2": 0.8067770511108784
+   },
+   "Z02": {
+    "n": 125,
+    "mae": 0.0020457371677816694,
+    "rmse": 0.0026921862652968787,
+    "r2": 0.783387809282359
+   }
+  },
+  "by_confounding_flag": {
+   "none": {
+    "n": 199,
+    "mae": 0.0018510135837461388
+   },
+   "rain_window": {
+    "n": 3,
+    "mae": 0.0034497760005558474
+   }
+  },
+  "by_month": [
+   {
+    "month": "2025-07",
+    "n": 45,
+    "mae": 0.0023570221336983266,
+    "mean_actual": 0.029565655553333334,
+    "mean_pred": 0.0288020500496783
+   },
+   {
+    "month": "2025-08",
+    "n": 46,
+    "mae": 0.0018169373398234754,
+    "mean_actual": 0.029133294921739127,
+    "mean_pred": 0.028792029096687037
+   },
+   {
+    "month": "2025-09",
+    "n": 43,
+    "mae": 0.001387437707401075,
+    "mean_actual": 0.02612963217209302,
+    "mean_pred": 0.026217854975352894
+   },
+   {
+    "month": "2025-10",
+    "n": 31,
+    "mae": 0.0017498127494085418,
+    "mean_actual": 0.027851259141935487,
+    "mean_pred": 0.027448329365875247
+   },
+   {
+    "month": "2025-11",
+    "n": 21,
+    "mae": 0.0017584172187829704,
+    "mean_actual": 0.02912112064285714,
+    "mean_pred": 0.028172422254682337
+   },
+   {
+    "month": "2025-12",
+    "n": 16,
+    "mae": 0.002389071204655699,
+    "mean_actual": 0.025531729168750003,
+    "mean_pred": 0.024716166724931012
+   }
+  ]
+ },
+ "importance": {
+  "impurity": [
+   {
+    "feature": "planned_volume_l",
+    "importance": 0.41961012332918385
+   },
+   {
+    "feature": "planned_duration_min",
+    "importance": 0.40159133153616283
+   },
+   {
+    "feature": "pre_vwc",
+    "importance": 0.0759906861020787
+   },
+   {
+    "feature": "forecast_et0_mm",
+    "importance": 0.06376190472979579
+   },
+   {
+    "feature": "doy_cos",
+    "importance": 0.019542465722346535
+   },
+   {
+    "feature": "doy_sin",
+    "importance": 0.017476683875672118
+   },
+   {
+    "feature": "forecast_rain_mm",
+    "importance": 0.002026804704760219
+   },
+   {
+    "feature": "root_depth_m",
+    "importance": 0.0
+   },
+   {
+    "feature": "area_m2",
+    "importance": 0.0
+   }
+  ],
+  "permutation_test": [
+   {
+    "feature": "planned_volume_l",
+    "rmse_increase": 0.002361806923562805,
+    "std": 0.00017058250240862839
+   },
+   {
+    "feature": "planned_duration_min",
+    "rmse_increase": 0.002134497612340216,
+    "std": 0.00015889874702522118
+   },
+   {
+    "feature": "forecast_et0_mm",
+    "rmse_increase": 0.0004984505780127833,
+    "std": 7.262883669319949e-05
+   },
+   {
+    "feature": "pre_vwc",
+    "rmse_increase": 0.00039489665122096555,
+    "std": 8.479975279595785e-05
+   },
+   {
+    "feature": "doy_cos",
+    "rmse_increase": 9.452899065532601e-05,
+    "std": 2.640883668741729e-05
+   },
+   {
+    "feature": "doy_sin",
+    "rmse_increase": 1.2673736469166102e-05,
+    "std": 6.237050343143382e-06
+   },
+   {
+    "feature": "forecast_rain_mm",
+    "rmse_increase": 2.349093104117854e-06,
+    "std": 2.5400504917197575e-06
+   },
+   {
+    "feature": "root_depth_m",
+    "rmse_increase": -3.2526065174565133e-19,
+    "std": 3.595891803022605e-19
+   },
+   {
+    "feature": "area_m2",
+    "rmse_increase": -4.77048955893622e-19,
+    "std": 3.8546398786908376e-19
+   }
+  ],
+  "note": "Permutation على الاختبار بعد الاختيار — للتفسير فقط، لم يُستخدم في اختيار أي إعداد"
+ },
+ "feature_ranges": {
+  "pre_vwc": {
+   "min": 0.0616256,
+   "max": 0.1428737,
+   "p05": 0.06749483,
+   "p95": 0.11607007999999999
+  },
+  "planned_volume_l": {
+   "min": 16.0,
+   "max": 80.0,
+   "p05": 40.0,
+   "p95": 80.0
+  },
+  "planned_duration_min": {
+   "min": 8.0,
+   "max": 40.0,
+   "p05": 20.0,
+   "p95": 40.0
+  },
+  "root_depth_m": {
+   "min": 0.25,
+   "max": 0.25,
+   "p05": 0.25,
+   "p95": 0.25
+  },
+  "area_m2": {
+   "min": 5.0,
+   "max": 5.0,
+   "p05": 5.0,
+   "p95": 5.0
+  },
+  "forecast_rain_mm": {
+   "min": 0.0,
+   "max": 11.942348,
+   "p05": 0.0,
+   "p95": 0.330859
+  },
+  "forecast_et0_mm": {
+   "min": 0.789918,
+   "max": 16.36399,
+   "p05": 3.6960155,
+   "p95": 13.010696
+  },
+  "doy_sin": {
+   "min": -0.999999422,
+   "max": 0.9999855507,
+   "p05": -0.9785481346,
+   "p95": 0.9927536023999999
+  },
+  "doy_cos": {
+   "min": -0.999979193,
+   "max": 0.9999907524,
+   "p05": -0.9917970642299999,
+   "p95": 0.9535238893699994
+  }
+ },
+ "software": {
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "pandas": "3.0.5",
+  "scikit-learn": "1.9.1",
+  "seed": 20261107
+ },
+ "limitations": [
+  "الوسوم من حساسات محاكاة؛ لا توجد حقيقة ميدانية مستقلة.",
+  "موقع واحد ومنطقتان؛ التقسيم زمني فقط ولا يختبر التعميم على مواقع جديدة.",
+  "السجلات متتابعة زمنيًا ومترابطة؛ ليست مكررات مستقلة.",
+  "النموذج يتنبأ بالاستجابة لخطة معطاة ولا يحدد الجرعة المثلى.",
+  "الحجم المخطط في التدريب بين 16 و80 لترًا والمدة = الحجم ÷ 2 لتر/دقيقة دائمًا."
+ ]
+}

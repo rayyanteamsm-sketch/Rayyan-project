@@ -1,0 +1,23 @@
+{
+ "original_upload_sha256": "8498d78d74d29934af872c1b74103a96a05d8228619622ebcaf89a151d48335f",
+ "package_verification": {
+  "verified": 94,
+  "failed": [],
+  "skipped_hidden_cache": [
+   ".Rayyan_Bermuda_2024_2025.xlsx.inspect.ndjson.7bvNtg",
+   ".Rayyan_Bermuda_2024_2025.xlsx.inspect.ndjson.7bvNtg.x8F80w"
+  ]
+ },
+ "images": 12,
+ "database": "data/database/rayyan.sqlite",
+ "v2_tables": {
+  "v2_zones": 4,
+  "v2_weather": 730,
+  "v2_ml_ready": 2920,
+  "v2_outcomes": 2920,
+  "v2_simulation_audit": 2920,
+  "v2_reported_baselines": 8,
+  "v2_dictionary": 78,
+  "v2_readme": 20
+ }
+}

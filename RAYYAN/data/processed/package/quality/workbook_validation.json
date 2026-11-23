@@ -1,0 +1,32 @@
+{
+  "workbook": "Rayyan_Bermuda_2024_2025.xlsx",
+  "sheets": 43,
+  "cells_compared": 308271,
+  "datetime_cells_compared": 62231,
+  "scope": "REVIEW workbook;4telemetry subsets;allCSVandSQLitecomplete",
+  "mismatches": [],
+  "all_values_match": true,
+  "source_text_dates_auto_converted": 1,
+  "date_comparison_tolerance_seconds": 0.002,
+  "summary_formula_cache": [
+    [
+      "Z01",
+      "conventional",
+      295,
+      14670.142247146574,
+      2934.0284494293146,
+      295,
+      5
+    ],
+    [
+      "Z02",
+      "rayyan",
+      475,
+      31324.07676513742,
+      6264.815353027484,
+      474,
+      5
+    ]
+  ],
+  "zip_integrity": "PASS"
+}
