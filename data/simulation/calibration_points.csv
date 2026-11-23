@@ -1,0 +1,11 @@
+point_id,calibration_id,raw_adc,reference_vwc,reference_method
+CPZ010,CZ01,1600.0000000000,0.0600000000,simulation_oracle_not_lab
+CPZ011,CZ01,2000.0000000000,0.1000000000,simulation_oracle_not_lab
+CPZ012,CZ01,2500.0000000000,0.1500000000,simulation_oracle_not_lab
+CPZ013,CZ01,3000.0000000000,0.2000000000,simulation_oracle_not_lab
+CPZ014,CZ01,4000.0000000000,0.3000000000,simulation_oracle_not_lab
+CPZ020,CZ02,1600.0000000000,0.0600000000,simulation_oracle_not_lab
+CPZ021,CZ02,2000.0000000000,0.1000000000,simulation_oracle_not_lab
+CPZ022,CZ02,2500.0000000000,0.1500000000,simulation_oracle_not_lab
+CPZ023,CZ02,3000.0000000000,0.2000000000,simulation_oracle_not_lab
+CPZ024,CZ02,4000.0000000000,0.3000000000,simulation_oracle_not_lab

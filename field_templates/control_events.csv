@@ -1,0 +1,1 @@
+command_id,decision_id,device_id,command_action,issued_at,acknowledged_at,ack_status,physical_valve_state,evidence_kind

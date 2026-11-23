@@ -1,0 +1,1 @@
+event_id,decision_id,zone_id,device_id,execution_started_at,execution_ended_at,flow_started_at,flow_ended_at,counter_epoch_id,meter_start_l,meter_end_l,delivered_volume_l,volume_method,scenario_id,event_quality

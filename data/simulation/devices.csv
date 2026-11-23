@@ -1,0 +1,7 @@
+device_id,zone_id,device_type,depth_m,installation_status,valid_from,valid_to
+SZ01,Z01,soil_sensor,0.1250000000,virtual_not_installed,2023-12-31T21:00:00Z,2025-12-31T21:00:00Z
+FZ01,Z01,flow_meter,,virtual_not_installed,2023-12-31T21:00:00Z,2025-12-31T21:00:00Z
+VZ01,Z01,valve_relay,,virtual_not_installed,2023-12-31T21:00:00Z,2025-12-31T21:00:00Z
+SZ02,Z02,soil_sensor,0.1250000000,virtual_not_installed,2023-12-31T21:00:00Z,2025-12-31T21:00:00Z
+FZ02,Z02,flow_meter,,virtual_not_installed,2023-12-31T21:00:00Z,2025-12-31T21:00:00Z
+VZ02,Z02,valve_relay,,virtual_not_installed,2023-12-31T21:00:00Z,2025-12-31T21:00:00Z

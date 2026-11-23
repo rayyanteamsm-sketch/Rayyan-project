@@ -1,0 +1,1 @@
+site_balance_id,site_id,date_local,starting_storage_l,inlet_volume_l,zone_metered_volume_l,ending_storage_l,known_other_outlet_l,unaccounted_volume_l,available_at,balance_basis
