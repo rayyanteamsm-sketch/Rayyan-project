@@ -1,0 +1,301 @@
+check_id,check,table,status,observed,expected,action_ar
+QC0001,primary_key,weather_reanalysis,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0002,dictionary_coverage,weather_reanalysis,PASS,15,15,none
+QC0003,logical_types,weather_reanalysis,PASS,0,0 invalid values,none
+QC0004,required_values,weather_reanalysis,PASS,0,0 missing required values,none
+QC0005,missing_profile,weather_reanalysis,PASS,{},reported;nullable does not mean imputed,none
+QC0006,foreign_key:site_id->sites.site_id,weather_reanalysis,PASS,0,0 orphan values,none
+QC0007,time_interval:interval_start_at,weather_reanalysis,PASS,0,end > start,none
+QC0008,primary_key,study_climate,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0009,dictionary_coverage,study_climate,PASS,8,8,none
+QC0010,logical_types,study_climate,PASS,0,0 invalid values,none
+QC0011,required_values,study_climate,PASS,0,0 missing required values,none
+QC0012,missing_profile,study_climate,PASS,{},reported;nullable does not mean imputed,none
+QC0013,primary_key,study_crop,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0014,dictionary_coverage,study_crop,PASS,8,8,none
+QC0015,logical_types,study_crop,PASS,0,0 invalid values,none
+QC0016,required_values,study_crop,PASS,0,0 missing required values,none
+QC0017,missing_profile,study_crop,PASS,{},reported;nullable does not mean imputed,none
+QC0018,primary_key,study_parameters,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0019,dictionary_coverage,study_parameters,PASS,7,7,none
+QC0020,logical_types,study_parameters,PASS,0,0 invalid values,none
+QC0021,required_values,study_parameters,PASS,0,0 missing required values,none
+QC0022,missing_profile,study_parameters,PASS,{},reported;nullable does not mean imputed,none
+QC0023,primary_key,sites,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0024,dictionary_coverage,sites,PASS,8,8,none
+QC0025,logical_types,sites,PASS,0,0 invalid values,none
+QC0026,required_values,sites,PASS,0,0 missing required values,none
+QC0027,missing_profile,sites,PASS,{},reported;nullable does not mean imputed,none
+QC0028,time_interval:valid_from,sites,PASS,0,end > start,none
+QC0029,fixed_simulation_period,sites,PASS,1,one declared simulation version,none
+QC0030,primary_key,zones,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0031,dictionary_coverage,zones,PASS,9,9,none
+QC0032,logical_types,zones,PASS,0,0 invalid values,none
+QC0033,required_values,zones,PASS,0,0 missing required values,none
+QC0034,missing_profile,zones,PASS,"{""cultivar"": 2}",reported;nullable does not mean imputed,none
+QC0035,foreign_key:site_id->sites.site_id,zones,PASS,0,0 orphan values,none
+QC0036,time_interval:valid_from,zones,PASS,0,end > start,none
+QC0037,fixed_simulation_period,zones,PASS,1,one declared simulation version,none
+QC0038,primary_key,zone_profiles,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0039,dictionary_coverage,zone_profiles,PASS,14,14,none
+QC0040,logical_types,zone_profiles,PASS,0,0 invalid values,none
+QC0041,required_values,zone_profiles,PASS,0,0 missing required values,none
+QC0042,missing_profile,zone_profiles,PASS,{},reported;nullable does not mean imputed,none
+QC0043,foreign_key:zone_id->zones.zone_id,zone_profiles,PASS,0,0 orphan values,none
+QC0044,time_interval:valid_from,zone_profiles,PASS,0,end > start,none
+QC0045,fixed_simulation_period,zone_profiles,PASS,1,one declared simulation version,none
+QC0046,primary_key,devices,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0047,dictionary_coverage,devices,PASS,7,7,none
+QC0048,logical_types,devices,PASS,0,0 invalid values,none
+QC0049,required_values,devices,PASS,0,0 missing required values,none
+QC0050,missing_profile,devices,PASS,"{""depth_m"": 4}",reported;nullable does not mean imputed,none
+QC0051,foreign_key:zone_id->zones.zone_id,devices,PASS,0,0 orphan values,none
+QC0052,time_interval:valid_from,devices,PASS,0,end > start,none
+QC0053,fixed_simulation_period,devices,PASS,1,one declared simulation version,none
+QC0054,primary_key,calibrations,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0055,dictionary_coverage,calibrations,PASS,9,9,none
+QC0056,logical_types,calibrations,PASS,0,0 invalid values,none
+QC0057,required_values,calibrations,PASS,0,0 missing required values,none
+QC0058,missing_profile,calibrations,PASS,{},reported;nullable does not mean imputed,none
+QC0059,foreign_key:device_id->devices.device_id,calibrations,PASS,0,0 orphan values,none
+QC0060,time_interval:valid_from,calibrations,PASS,0,end > start,none
+QC0061,fixed_simulation_period,calibrations,PASS,1,one declared simulation version,none
+QC0062,primary_key,calibration_points,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0063,dictionary_coverage,calibration_points,PASS,5,5,none
+QC0064,logical_types,calibration_points,PASS,0,0 invalid values,none
+QC0065,required_values,calibration_points,PASS,0,0 missing required values,none
+QC0066,missing_profile,calibration_points,PASS,{},reported;nullable does not mean imputed,none
+QC0067,foreign_key:calibration_id->calibrations.calibration_id,calibration_points,PASS,0,0 orphan values,none
+QC0068,primary_key,measurements_raw,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0069,dictionary_coverage,measurements_raw,PASS,7,7,none
+QC0070,logical_types,measurements_raw,PASS,0,0 invalid values,none
+QC0071,required_values,measurements_raw,PASS,0,0 missing required values,none
+QC0072,missing_profile,measurements_raw,PASS,"{""raw_adc"": 205}",reported;nullable does not mean imputed,none
+QC0073,foreign_key:device_id->devices.device_id,measurements_raw,PASS,0,0 orphan values,none
+QC0074,receive_after_measure,measurements_raw,PASS,0,0 negative latencies,none
+QC0075,primary_key,measurements_clean,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0076,dictionary_coverage,measurements_clean,PASS,10,10,none
+QC0077,logical_types,measurements_clean,PASS,0,0 invalid values,none
+QC0078,required_values,measurements_clean,PASS,0,0 missing required values,none
+QC0079,missing_profile,measurements_clean,PASS,"{""calibrated_original_vwc"": 205, ""usable_vwc"": 241}",reported;nullable does not mean imputed,none
+QC0080,foreign_key:message_id->measurements_raw.message_id,measurements_clean,PASS,0,0 orphan values,none
+QC0081,foreign_key:device_id->devices.device_id,measurements_clean,PASS,0,0 orphan values,none
+QC0082,foreign_key:calibration_id->calibrations.calibration_id,measurements_clean,PASS,0,0 orphan values,none
+QC0083,receive_after_measure,measurements_clean,PASS,0,0 negative latencies,none
+QC0084,primary_key,injection_audit,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0085,dictionary_coverage,injection_audit,PASS,4,4,none
+QC0086,logical_types,injection_audit,PASS,0,0 invalid values,none
+QC0087,required_values,injection_audit,PASS,0,0 missing required values,none
+QC0088,missing_profile,injection_audit,PASS,{},reported;nullable does not mean imputed,none
+QC0089,foreign_key:message_id->measurements_raw.message_id,injection_audit,PASS,0,0 orphan values,none
+QC0090,primary_key,weather_forecasts,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0091,dictionary_coverage,weather_forecasts,PASS,11,11,none
+QC0092,logical_types,weather_forecasts,PASS,0,0 invalid values,none
+QC0093,required_values,weather_forecasts,PASS,0,0 missing required values,none
+QC0094,missing_profile,weather_forecasts,PASS,{},reported;nullable does not mean imputed,none
+QC0095,foreign_key:site_id->sites.site_id,weather_forecasts,PASS,0,0 orphan values,none
+QC0096,time_interval:valid_from,weather_forecasts,PASS,0,end > start,none
+QC0097,primary_key,water_budgets,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0098,dictionary_coverage,water_budgets,PASS,7,7,none
+QC0099,logical_types,water_budgets,PASS,0,0 invalid values,none
+QC0100,required_values,water_budgets,PASS,0,0 missing required values,none
+QC0101,missing_profile,water_budgets,PASS,{},reported;nullable does not mean imputed,none
+QC0102,foreign_key:site_id->sites.site_id,water_budgets,PASS,0,0 orphan values,none
+QC0103,time_interval:valid_from,water_budgets,PASS,0,end > start,none
+QC0104,primary_key,decisions,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0105,dictionary_coverage,decisions,PASS,17,17,none
+QC0106,logical_types,decisions,PASS,0,0 invalid values,none
+QC0107,required_values,decisions,PASS,0,0 missing required values,none
+QC0108,missing_profile,decisions,PASS,"{""planned_start_at"": 692, ""planned_end_at"": 692, ""prediction_target_at"": 692, ""predicted_delta_vwc"": 692}",reported;nullable does not mean imputed,none
+QC0109,foreign_key:zone_id->zones.zone_id,decisions,PASS,0,0 orphan values,none
+QC0110,foreign_key:profile_id->zone_profiles.profile_id,decisions,PASS,0,0 orphan values,none
+QC0111,foreign_key:budget_id->water_budgets.budget_id,decisions,PASS,0,0 orphan values,none
+QC0112,foreign_key:forecast_id->weather_forecasts.forecast_id,decisions,PASS,0,0 orphan values,none
+QC0113,foreign_key:input_sample_id->measurements_clean.sample_id,decisions,PASS,0,0 orphan values,none
+QC0114,primary_key,plan_candidates,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0115,dictionary_coverage,plan_candidates,PASS,5,5,none
+QC0116,logical_types,plan_candidates,PASS,0,0 invalid values,none
+QC0117,required_values,plan_candidates,PASS,0,0 missing required values,none
+QC0118,missing_profile,plan_candidates,PASS,{},reported;nullable does not mean imputed,none
+QC0119,foreign_key:decision_id->decisions.decision_id,plan_candidates,PASS,0,0 orphan values,none
+QC0120,primary_key,control_events,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0121,dictionary_coverage,control_events,PASS,9,9,none
+QC0122,logical_types,control_events,PASS,0,0 invalid values,none
+QC0123,required_values,control_events,PASS,0,0 missing required values,none
+QC0124,missing_profile,control_events,PASS,"{""physical_valve_state"": 1541}",reported;nullable does not mean imputed,none
+QC0125,foreign_key:decision_id->decisions.decision_id,control_events,PASS,0,0 orphan values,none
+QC0126,foreign_key:device_id->devices.device_id,control_events,PASS,0,0 orphan values,none
+QC0127,primary_key,flow_measurements,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0128,dictionary_coverage,flow_measurements,PASS,8,8,none
+QC0129,logical_types,flow_measurements,PASS,0,0 invalid values,none
+QC0130,required_values,flow_measurements,PASS,0,0 missing required values,none
+QC0131,missing_profile,flow_measurements,PASS,"{""flow_l_min"": 770}",reported;nullable does not mean imputed,none
+QC0132,foreign_key:event_id->irrigation_events.event_id,flow_measurements,PASS,0,0 orphan values,none
+QC0133,foreign_key:device_id->devices.device_id,flow_measurements,PASS,0,0 orphan values,none
+QC0134,receive_after_measure,flow_measurements,PASS,0,0 negative latencies,none
+QC0135,primary_key,irrigation_events,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0136,dictionary_coverage,irrigation_events,PASS,15,15,none
+QC0137,logical_types,irrigation_events,PASS,0,0 invalid values,none
+QC0138,required_values,irrigation_events,PASS,0,0 missing required values,none
+QC0139,missing_profile,irrigation_events,PASS,"{""flow_started_at"": 2, ""flow_ended_at"": 2, ""scenario_id"": 765}",reported;nullable does not mean imputed,none
+QC0140,foreign_key:decision_id->decisions.decision_id,irrigation_events,PASS,0,0 orphan values,none
+QC0141,foreign_key:zone_id->zones.zone_id,irrigation_events,PASS,0,0 orphan values,none
+QC0142,foreign_key:device_id->devices.device_id,irrigation_events,PASS,0,0 orphan values,none
+QC0143,foreign_key:scenario_id->test_scenarios.scenario_id,irrigation_events,PASS,0,0 orphan values,none
+QC0144,time_interval:execution_started_at,irrigation_events,PASS,0,end > start,none
+QC0145,primary_key,event_outcomes,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0146,dictionary_coverage,event_outcomes,PASS,14,14,none
+QC0147,logical_types,event_outcomes,PASS,0,0 invalid values,none
+QC0148,required_values,event_outcomes,PASS,0,0 missing required values,none
+QC0149,missing_profile,event_outcomes,PASS,"{""post_vwc"": 1, ""delta_vwc"": 1}",reported;nullable does not mean imputed,none
+QC0150,foreign_key:event_id->irrigation_events.event_id,event_outcomes,PASS,0,0 orphan values,none
+QC0151,foreign_key:decision_id->decisions.decision_id,event_outcomes,PASS,0,0 orphan values,none
+QC0152,foreign_key:pre_sample_id->measurements_clean.sample_id,event_outcomes,PASS,0,0 orphan values,none
+QC0153,primary_key,root_balance_daily,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0154,dictionary_coverage,root_balance_daily,PASS,15,15,none
+QC0155,logical_types,root_balance_daily,PASS,0,0 invalid values,none
+QC0156,required_values,root_balance_daily,PASS,0,0 missing required values,none
+QC0157,missing_profile,root_balance_daily,PASS,{},reported;nullable does not mean imputed,none
+QC0158,foreign_key:zone_id->zones.zone_id,root_balance_daily,PASS,0,0 orphan values,none
+QC0159,primary_key,site_balance_daily,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0160,dictionary_coverage,site_balance_daily,PASS,11,11,none
+QC0161,logical_types,site_balance_daily,PASS,0,0 invalid values,none
+QC0162,required_values,site_balance_daily,PASS,0,0 missing required values,none
+QC0163,missing_profile,site_balance_daily,PASS,{},reported;nullable does not mean imputed,none
+QC0164,foreign_key:site_id->sites.site_id,site_balance_daily,PASS,0,0 orphan values,none
+QC0165,primary_key,plant_assessments,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0166,dictionary_coverage,plant_assessments,PASS,8,8,none
+QC0167,logical_types,plant_assessments,PASS,0,0 invalid values,none
+QC0168,required_values,plant_assessments,PASS,0,0 missing required values,none
+QC0169,missing_profile,plant_assessments,PASS,"{""field_health_score"": 208}",reported;nullable does not mean imputed,none
+QC0170,foreign_key:zone_id->zones.zone_id,plant_assessments,PASS,0,0 orphan values,none
+QC0171,primary_key,test_scenarios,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0172,dictionary_coverage,test_scenarios,PASS,7,7,none
+QC0173,logical_types,test_scenarios,PASS,0,0 invalid values,none
+QC0174,required_values,test_scenarios,PASS,0,0 missing required values,none
+QC0175,missing_profile,test_scenarios,PASS,"{""zone_id"": 1}",reported;nullable does not mean imputed,none
+QC0176,foreign_key:zone_id->zones.zone_id,test_scenarios,PASS,0,0 orphan values,none
+QC0177,time_interval:valid_from,test_scenarios,PASS,0,end > start,none
+QC0178,primary_key,incident_reviews,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0179,dictionary_coverage,incident_reviews,PASS,9,9,none
+QC0180,logical_types,incident_reviews,PASS,0,0 invalid values,none
+QC0181,required_values,incident_reviews,PASS,0,0 missing required values,none
+QC0182,missing_profile,incident_reviews,PASS,"{""zone_id"": 1, ""event_id"": 1}",reported;nullable does not mean imputed,none
+QC0183,foreign_key:zone_id->zones.zone_id,incident_reviews,PASS,0,0 orphan values,none
+QC0184,foreign_key:event_id->irrigation_events.event_id,incident_reviews,PASS,0,0 orphan values,none
+QC0185,foreign_key:scenario_id->test_scenarios.scenario_id,incident_reviews,PASS,0,0 orphan values,none
+QC0186,primary_key,rule_alerts,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0187,dictionary_coverage,rule_alerts,PASS,8,8,none
+QC0188,logical_types,rule_alerts,PASS,0,0 invalid values,none
+QC0189,required_values,rule_alerts,PASS,0,0 missing required values,none
+QC0190,missing_profile,rule_alerts,PASS,"{""zone_id"": 1, ""event_id"": 2, ""alert_value"": 1}",reported;nullable does not mean imputed,none
+QC0191,foreign_key:zone_id->zones.zone_id,rule_alerts,PASS,0,0 orphan values,none
+QC0192,foreign_key:event_id->irrigation_events.event_id,rule_alerts,PASS,0,0 orphan values,none
+QC0193,primary_key,cost_summary,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0194,dictionary_coverage,cost_summary,PASS,8,8,none
+QC0195,logical_types,cost_summary,PASS,0,0 invalid values,none
+QC0196,required_values,cost_summary,PASS,0,0 missing required values,none
+QC0197,missing_profile,cost_summary,PASS,"{""energy_kwh"": 4}",reported;nullable does not mean imputed,none
+QC0198,foreign_key:zone_id->zones.zone_id,cost_summary,PASS,0,0 orphan values,none
+QC0199,primary_key,ml_features,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0200,dictionary_coverage,ml_features,PASS,15,15,none
+QC0201,logical_types,ml_features,PASS,0,0 invalid values,none
+QC0202,required_values,ml_features,PASS,0,0 missing required values,none
+QC0203,missing_profile,ml_features,PASS,{},reported;nullable does not mean imputed,none
+QC0204,foreign_key:decision_id->decisions.decision_id,ml_features,PASS,0,0 orphan values,none
+QC0205,foreign_key:zone_id->zones.zone_id,ml_features,PASS,0,0 orphan values,none
+QC0206,foreign_key:input_sample_id->measurements_clean.sample_id,ml_features,PASS,0,0 orphan values,none
+QC0207,foreign_key:forecast_id->weather_forecasts.forecast_id,ml_features,PASS,0,0 orphan values,none
+QC0208,primary_key,ml_targets,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0209,dictionary_coverage,ml_targets,PASS,6,6,none
+QC0210,logical_types,ml_targets,PASS,0,0 invalid values,none
+QC0211,required_values,ml_targets,PASS,0,0 missing required values,none
+QC0212,missing_profile,ml_targets,PASS,"{""delta_vwc"": 1}",reported;nullable does not mean imputed,none
+QC0213,foreign_key:decision_id->decisions.decision_id,ml_targets,PASS,0,0 orphan values,none
+QC0214,primary_key,split_manifest,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0215,dictionary_coverage,split_manifest,PASS,6,6,none
+QC0216,logical_types,split_manifest,PASS,0,0 invalid values,none
+QC0217,required_values,split_manifest,PASS,0,0 missing required values,none
+QC0218,missing_profile,split_manifest,PASS,{},reported;nullable does not mean imputed,none
+QC0219,foreign_key:decision_id->decisions.decision_id,split_manifest,PASS,0,0 orphan values,none
+QC0220,foreign_key:event_id->irrigation_events.event_id,split_manifest,PASS,0,0 orphan values,none
+QC0221,foreign_key:zone_id->zones.zone_id,split_manifest,PASS,0,0 orphan values,none
+QC0222,primary_key,feature_availability,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0223,dictionary_coverage,feature_availability,PASS,5,5,none
+QC0224,logical_types,feature_availability,PASS,0,0 invalid values,none
+QC0225,required_values,feature_availability,PASS,0,0 missing required values,none
+QC0226,missing_profile,feature_availability,PASS,{},reported;nullable does not mean imputed,none
+QC0227,foreign_key:decision_id->decisions.decision_id,feature_availability,PASS,0,0 orphan values,none
+QC0228,primary_key,sources,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0229,dictionary_coverage,sources,PASS,11,11,none
+QC0230,logical_types,sources,PASS,0,0 invalid values,none
+QC0231,required_values,sources,PASS,0,0 missing required values,none
+QC0232,missing_profile,sources,PASS,{},reported;nullable does not mean imputed,none
+QC0233,primary_key,assumptions,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0234,dictionary_coverage,assumptions,PASS,5,5,none
+QC0235,logical_types,assumptions,PASS,0,0 invalid values,none
+QC0236,required_values,assumptions,PASS,0,0 missing required values,none
+QC0237,missing_profile,assumptions,PASS,{},reported;nullable does not mean imputed,none
+QC0238,primary_key,field_collection_plan,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0239,dictionary_coverage,field_collection_plan,PASS,7,7,none
+QC0240,logical_types,field_collection_plan,PASS,0,0 invalid values,none
+QC0241,required_values,field_collection_plan,PASS,0,0 missing required values,none
+QC0242,missing_profile,field_collection_plan,PASS,{},reported;nullable does not mean imputed,none
+QC0243,primary_key,function_readiness,PASS,null=0;duplicates=0,0 missing/duplicate keys,none
+QC0244,dictionary_coverage,function_readiness,PASS,5,5,none
+QC0245,logical_types,function_readiness,PASS,0,0 invalid values,none
+QC0246,required_values,function_readiness,PASS,0,0 missing required values,none
+QC0247,missing_profile,function_readiness,PASS,{},reported;nullable does not mean imputed,none
+QC0248,two_year_hourly_coverage,weather_reanalysis,PASS,17544,17544,none
+QC0249,one_hour_intervals,weather_reanalysis,PASS,3600,3600,none
+QC0250,weather_ranges,weather_reanalysis,PASS,0,0 impossible humidity/negative accumulation,none
+QC0251,season_coverage,weather_reanalysis,PASS,24,24,none
+QC0252,reanalysis_not_live_features,weather_reanalysis,PASS,['reanalysis'],reference downloaded2026;not known2024-25,none
+QC0253,exact_local_period_bounds,weather_reanalysis,PASS,2023-12-31 21:00:00+00:00..2025-12-31 21:00:00+00:00,2023-12-31 21:00:00+00:00..2025-12-31 21:00:00+00:00,none
+QC0254,published_crop_equation,study_crop,PASS,5.684341886080802e-14,CWR=Kc*ETo;source rounding retained,none
+QC0255,published_leaching_equation,study_crop,PASS,4.226805572216108e-08,IWR=CWR/(1-0.03);not application efficiency,none
+QC0256,published_interval_equation,study_crop,PASS,4.827405142293628e-10,RAW/(CWR/monthdays);climatologicalFebruary28days,none
+QC0257,soil_parameter_order,zone_profiles,PASS,WP<FC<sat;root>0;0<eff<=1,physical order,none
+QC0258,raw_defect_detected:duplicate_delivery,measurements_raw,EXPECTED_ISSUE,detected=88;injected=88,equal,الخام محفوظ؛ إزالة تكرار النقل فقط، وNULL للقيمة غير الصالحة بلا تعويض
+QC0259,raw_defect_detected:missing_payload,measurements_raw,EXPECTED_ISSUE,detected=205;injected=205,equal,الخام محفوظ؛ إزالة تكرار النقل فقط، وNULL للقيمة غير الصالحة بلا تعويض
+QC0260,raw_defect_detected:out_of_range_spike,measurements_raw,EXPECTED_ISSUE,detected=36;injected=36,equal,الخام محفوظ؛ إزالة تكرار النقل فقط، وNULL للقيمة غير الصالحة بلا تعويض
+QC0261,first_arrival_deduplication,measurements_clean,PASS,88,88,none
+QC0262,raw_value_preserved_and_calibrated,measurements_clean,PASS,5.551115123125783e-17,max abs error<1e-8,none
+QC0263,no_imputation,measurements_clean,PASS,0,0,none
+QC0264,quality_mask,measurements_clean,PASS,241,NULL exactly when quality!=ok,none
+QC0265,usable_physical_bounds,measurements_clean,PASS,"[np.float64(0.0592077), np.float64(0.1688329)]",0..saturation;no clipping of original,none
+QC0266,volume_counter_difference,irrigation_events,PASS,1.014228701023967e-10,<1e-7 L,none
+QC0267,minute_flow_integral,flow_measurements,PASS,1.9999930600533844e-09,<1e-7 L;each rate duration1minute,none
+QC0268,counter_epoch_reset_handling,flow_measurements,PASS,4,4 epochs;nondecreasing within each,none
+QC0269,no_flow_is_valid_zero,irrigation_events,PASS,2,zero water remains a valid failed attempt,none
+QC0270,fixed_target_time,decisions,PASS,770,planned_end+response_lag;never actual_end,none
+QC0271,planned_duration,decisions,PASS,volume/duration,equal nominal rate,none
+QC0272,decision_uses_asissued_forecast_coefficient,decisions,PASS,475,"trigger uses simulated forecast temperature,not realized daily mean",none
+QC0273,plan_budget_constraint,decisions,PASS,0.0,<=0 L budget overrun in plan,none
+QC0274,actual_deviation_retained,irrigation_events,PASS,max delivered-minus-plan=22.674624L,not clipped to plan;faults/flow variability retained,none
+QC0275,target_window_samples,event_outcomes,PASS,0,all at fixed target-5/0/+5min,none
+QC0276,outcome_formula_and_missing_policy,event_outcomes,PASS,3.333337078581522e-11,mean>=2post;delta=post-pre;no missing label imputation,none
+QC0277,same_zone_target_sensors,event_outcomes,PASS,0,pre and post sensors belong to event zone,none
+QC0278,root_mass_balance,root_balance_daily,PASS,2.00003569261753e-10,<1e-7 mm each zone-day,none
+QC0279,storage_continuity,root_balance_daily,PASS,0.0,previous end=next start,none
+QC0280,root_physical_bounds,root_balance_daily,PASS,"[np.float64(0.0604487289), np.float64(0.1512084801)]",0..saturation;rare wet/dry states retained,none
+QC0281,site_mass_balance,site_balance_daily,PASS,2.842170943040401e-14,formula exact;residual not diagnosis,none
+QC0282,site_to_zone_volume,site_balance_daily,PASS,1.000159954855917e-10,equals event totals;no double counting,none
+QC0283,data_available_before_validity,weather_forecasts,PASS,0,0,none
+QC0284,data_available_before_validity,water_budgets,PASS,0,0,none
+QC0285,as_of_feature_availability,feature_availability,PASS,0,0,none
+QC0286,feature_snapshot_before_decision,ml_features,PASS,0,0,none
+QC0287,forbidden_future_columns,ml_features,PASS,[],empty;IDs excluded from numeric model Features,none
+QC0288,time_split_membership,split_manifest,PASS,"{'train': 385, 'test': 202, 'validation': 183}",2024/train;2025JanJun/validation;2025JulDec/test,none
+QC0289,one_event_one_split,split_manifest,PASS,1,1,none
+QC0290,purge_target_overlap,split_manifest,PASS,train_last_label=2024-12-30 05:42:59+00:00;validation_last_label=2025-06-30 05:45:16+00:00,labels available before next split starts,none
+QC0291,label_after_prediction,ml_targets,PASS,769,all target availability after decision,none
+QC0292,missing_target_excluded,split_manifest,PASS,1,at least1deliberately incomplete post-window;eligibleFalse;never filled,none
+QC0293,alert_data_available_first,rule_alerts,PASS,7,0 alerts before input arrived,none
+QC0294,injected_operational_cases_detected_by_rules,rule_alerts,PASS,6,6,none
+QC0295,cause_confirmation_after_alert,incident_reviews,PASS,6,field/oracle confirmation later than detection,none
+QC0296,cost_arithmetic,cost_summary,PASS,3.540101545240759e-11,assumed scenario only,none
+QC0297,energy_not_invented,cost_summary,PASS,4,all NULL: no meter/pump energy measurements,none
+QC0298,field_labels_absent,ml_targets,OPEN_GAP,no real field ground truth,requires field collection,جمعTargetحقيقي ومعايرة ونبات مستقل قبل أي اعتماد ميداني
+QC0299,independent_site_test_absent,split_manifest,OPEN_GAP,same2zones;1site;1zone_per_arm,additional independent sites and replicated plots,لا تدعم الحزمة تعميمًا مكانيًا أو إثبات توفير سببي
+QC0300,valve_position_feedback_absent,control_events,OPEN_GAP,physical_valve_state=NULL,field feedback if physical state must be proven,الإقرار يؤكد الاستلام فقط؛ التدفق دليل ماء مستقل

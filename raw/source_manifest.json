@@ -1,0 +1,50 @@
+{
+  "weather": {
+    "url": "https://archive-api.open-meteo.com/v1/archive?latitude=24.73&longitude=46.73&start_date=2024-01-01&end_date=2026-01-01&timezone=Asia%2FRiyadh&hourly=temperature_2m,relative_humidity_2m,precipitation,et0_fao_evapotranspiration,shortwave_radiation,wind_speed_10m&models=era5&wind_speed_unit=ms&elevation=nan",
+    "file": "raw/weather_era5.json",
+    "bytes": 821759,
+    "sha256": "837f05f9d8da34f134257fd4092e43df46f319c4f9eda3116f27f2aea337ce0e",
+    "accessed_at": "2026-11-07T00:16:15.603927+00:00",
+    "status": "downloaded"
+  },
+  "paper": {
+    "url": "https://journals.ajsrp.com/index.php/jnslas/en/article/download/989/937/1869",
+    "file": "raw/saeed_2018.pdf",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden",
+    "web_verification_status": "verified_primary_content_via_web_retrieval_2026-11-07",
+    "snapshot_note": "Runtime direct HTTP returned403;full source not bundled;linked source verified through research tool"
+  },
+  "fao56": {
+    "url": "https://www.fao.org/4/X0490E/x0490e0e.htm",
+    "file": "raw/fao56_ch8.html",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden",
+    "web_verification_status": "verified_primary_content_via_web_retrieval_2026-11-07",
+    "snapshot_note": "Runtime direct HTTP returned403;full source not bundled;linked source verified through research tool"
+  },
+  "weather_docs": {
+    "url": "https://open-meteo.com/en/docs/historical-weather-api",
+    "file": "raw/open_meteo_docs.html",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden",
+    "web_verification_status": "verified_primary_content_via_web_retrieval_2026-11-07",
+    "snapshot_note": "Runtime direct HTTP returned403;full source not bundled;linked source verified through research tool"
+  },
+  "weather_terms": {
+    "url": "https://open-meteo.com/en/terms",
+    "file": "raw/open_meteo_terms.html",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden",
+    "web_verification_status": "verified_primary_content_via_web_retrieval_2026-11-07",
+    "snapshot_note": "Runtime direct HTTP returned403;full source not bundled;linked source verified through research tool"
+  },
+  "paper_landing": {
+    "url": "https://journals.ajsrp.com/index.php/jnslas/en/article/view/989",
+    "file": "raw/paper_landing.html",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden",
+    "web_verification_status": "verified_primary_content_via_web_retrieval_2026-11-07",
+    "snapshot_note": "Runtime direct HTTP returned403;full source not bundled;linked source verified through research tool"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "checks": 300,
+  "status_counts": {
+    "PASS": 294,
+    "EXPECTED_ISSUE": 3,
+    "OPEN_GAP": 3
+  },
+  "rows": {
+    "weather_reanalysis": 17544,
+    "study_climate": 12,
+    "study_crop": 12,
+    "study_parameters": 10,
+    "sites": 1,
+    "zones": 2,
+    "zone_profiles": 2,
+    "devices": 6,
+    "calibrations": 2,
+    "calibration_points": 10,
+    "measurements_raw": 37486,
+    "measurements_clean": 37398,
+    "injection_audit": 329,
+    "weather_forecasts": 731,
+    "water_budgets": 731,
+    "decisions": 1462,
+    "plan_candidates": 4386,
+    "control_events": 1541,
+    "flow_measurements": 23843,
+    "irrigation_events": 770,
+    "event_outcomes": 770,
+    "root_balance_daily": 1462,
+    "site_balance_daily": 731,
+    "plant_assessments": 208,
+    "test_scenarios": 6,
+    "incident_reviews": 6,
+    "rule_alerts": 7,
+    "cost_summary": 4,
+    "ml_features": 770,
+    "ml_targets": 770,
+    "split_manifest": 770,
+    "feature_availability": 2310,
+    "sources": 7,
+    "assumptions": 26,
+    "field_collection_plan": 11,
+    "function_readiness": 8
+  },
+  "raw_defects": {
+    "duplicate_messages": 88,
+    "missing_raw_payloads": 205,
+    "invalid_clean_samples": 36
+  },
+  "field_ground_truth_available": false,
+  "production_model_ready": false
+}

@@ -1,0 +1,116 @@
+{
+  "task": "regression:soil moisture response after planned irrigation",
+  "target": "delta_vwc=post_vwc-pre_vwc",
+  "target_unit": "m3/m3",
+  "timing": "prediction04:00 local;target planned_end+120min;post +/-5min window",
+  "ground_truth": "simulation sensors only;no independent field labels",
+  "features": [
+    "pre_vwc",
+    "planned_volume_l",
+    "planned_duration_min",
+    "root_depth_m",
+    "area_m2",
+    "forecast_rain_mm",
+    "forecast_et0_mm",
+    "doy_sin",
+    "doy_cos"
+  ],
+  "excluded_metadata": [
+    "decision_id",
+    "zone_id",
+    "issued_at",
+    "input_sample_id",
+    "forecast_id",
+    "features_available_at"
+  ],
+  "forbidden_future": [
+    "delivered_volume_l",
+    "actual_end",
+    "post_vwc",
+    "delta_vwc",
+    "scenario_id",
+    "confirmed_cause",
+    "realized_weather"
+  ],
+  "training_n": 384,
+  "validation_n": 183,
+  "test_n": 202,
+  "updated_fit_n": 567,
+  "hyperparameters": {
+    "n_estimators": 80,
+    "max_depth": 8,
+    "min_samples_leaf": 4,
+    "random_state": 20261107,
+    "n_jobs": 1
+  },
+  "selection": "parameters fixed in advance;validation not used as test;updated model evaluated on identical untouched test period",
+  "limitations": [
+    "same simulator;autocorrelated records;2zones same site;1zone per arm",
+    "no claim of optimal irrigation or field water savings",
+    "temperature/dormancy,soil,meter and plant proxy assumptions need independent measurement",
+    "no automatic promotion or live valve control"
+  ],
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0"
+  },
+  "metrics": [
+    {
+      "model_id": "zero_change_baseline",
+      "evaluation_split": "validation",
+      "n_cases": 183,
+      "mae_vwc": 0.02550684389781421,
+      "rmse_vwc": 0.026429783625793603,
+      "r2": -12.909413656573392,
+      "training_period": "none",
+      "label_origin": "simulation_only_NO_field_accuracy_claim",
+      "deployed": false
+    },
+    {
+      "model_id": "RF_fixed_2024",
+      "evaluation_split": "validation",
+      "n_cases": 183,
+      "mae_vwc": 0.002145920352296971,
+      "rmse_vwc": 0.0034284787532847106,
+      "r2": 0.7659414380339415,
+      "training_period": "2024",
+      "label_origin": "simulation_only_NO_field_accuracy_claim",
+      "deployed": false
+    },
+    {
+      "model_id": "zero_change_baseline",
+      "evaluation_split": "test",
+      "n_cases": 202,
+      "mae_vwc": 0.028106933085643566,
+      "rmse_vwc": 0.02871624146073703,
+      "r2": -22.817301391678868,
+      "training_period": "none",
+      "label_origin": "simulation_only_NO_field_accuracy_claim",
+      "deployed": false
+    },
+    {
+      "model_id": "RF_fixed_2024",
+      "evaluation_split": "test",
+      "n_cases": 202,
+      "mae_vwc": 0.0018420022498014709,
+      "rmse_vwc": 0.0023351230432756506,
+      "r2": 0.8425085800731837,
+      "training_period": "2024",
+      "label_origin": "simulation_only_NO_field_accuracy_claim",
+      "deployed": false
+    },
+    {
+      "model_id": "RF_updated_through_Jun2025",
+      "evaluation_split": "test",
+      "n_cases": 202,
+      "mae_vwc": 0.0017864923403459537,
+      "rmse_vwc": 0.0022261730918009684,
+      "r2": 0.8568619100666588,
+      "training_period": "2024+2025JanJun",
+      "label_origin": "simulation_only_NO_field_accuracy_claim",
+      "deployed": false
+    }
+  ]
+}
